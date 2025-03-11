@@ -1,0 +1,26 @@
+
+format = '''
+$directory
+$git_branch[](#00DD00) '''
+
+[directory]
+format = "[$path]($style)"
+style = "bold cyan"
+home_symbol = "~"
+truncation_length = 8
+truncation_symbol = ".../"
+truncate_to_repo = false
+use_os_path_sep = true
+
+# [directory.substitutions]
+# "Documents" = "󰈙 "
+# "Downloads" = " "
+# "Music" = " "
+# "Desktop" = " "
+# "Pictures" = " "
+# "~/Desktop/Prashant" = "PM_HOME"
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style) "
+symbol = " "
+style = "bold purple"
