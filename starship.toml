@@ -1,7 +1,11 @@
 
 format = '''
-$directory
+$directory  $cmd_duration
 $git_branch[](#00DD00) '''
+
+[cmd_duration]
+min_time = 500
+format = 'took [$duration](bold yellow)'
 
 [directory]
 format = "[$path]($style)"
