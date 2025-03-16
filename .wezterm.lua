@@ -210,18 +210,8 @@ wezterm.on("update-status", function(window, pane)
   cmd = cmd and string.gsub(cmd, "(.*[/\\])(.*)", "%2") or ""
 
   -- Time
-  local time = wezterm.strftime("%H:%M")
-  -- local battery = wezterm.battery_info()[1]
-  -- local battery_percentage = battery and battery.state_of_charge or nil
-  -- local battery_color = "#ffffff" -- Default color (white)
-  -- if battery_percentage > 0.7 then
-  --   battery_color = "#a0e878" -- Green for high percentage
-  -- elseif battery_percentage > 0.3 then
-  --   battery_color = "#ffdd57" -- Yellow for medium percentage
-  -- else
-  --   battery_color = "#f28b82" -- Red for low percentage
-  -- end
-  -- Current command
+  -- local time = wezterm.strftime("%H:%M")
+  local time = wezterm.strftime("%I:%M %p")
 
   window:set_right_status(wezterm.format({
     -- Wezterm has a built-in nerd fonts
@@ -229,17 +219,10 @@ wezterm.on("update-status", function(window, pane)
     -- { Text = wezterm.nerdfonts.md_folder .. "  " .. cwd },
     { Text = " | " },
     { Foreground = { Color = "#e0af68" } },
-    { Text = wezterm.nerdfonts.fa_code .. "  " .. cmd },
+    { Text = wezterm.nerdfonts.fa_code .. " " .. cmd },
     "ResetAttributes",
-    -- { Text = " | " },
-    -- -- { Foreground = { Color = battery_color } },
-    -- {
-    --   Text = wezterm.nerdfonts.fa_battery .. " " .. bat,
-    --   -- .. (battery_percentage and string.format("%.0f%%", battery_percentage * 100) .. "%" or "N/A"),
-    -- },
-    -- "ResetAttributes",
     { Text = " | " },
-    { Text = wezterm.nerdfonts.md_clock .. "  " .. time },
+    { Text = wezterm.nerdfonts.md_clock .. " " .. time },
     { Text = "  " },
   }))
 end)
