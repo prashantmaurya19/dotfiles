@@ -1,11 +1,9 @@
 param(
   [string] $fname="",
-  [System.Boolean] $All=$true,
-  [System.Boolean] $Backup=$false,
-  [System.Boolean] $Restore=$false
+  [switch] $All,
+  [switch] $Backup,
+  [switch] $Restore
 ) 
-
-
 if(( $Backup -and $Restore ) -or (-Not $Backup -and -Not $Restore)){
   Write-Host "Pls select one operation at a time!!" -ForegroundColor Red
   return;
@@ -14,7 +12,8 @@ if(( $Backup -and $Restore ) -or (-Not $Backup -and -Not $Restore)){
 $CWD = (Get-Item .).FullName
 
 $location_pair = @{
-    ".wezterm.lua" = "$HOME\";
+  ".wezterm.lua" = "$HOME\";
+  "Microsoft.PowerShell_profile.ps1"="$HOME\Documents\PowerShell\";
   "starship.toml" = "$HOME\.config\"
 }
 $ignore = @("stow.ps1","README.md","WindowsTerminalSettings.json")
@@ -55,6 +54,7 @@ param(
 
   $source = Get-SourcePath -Fname $Fname
   $dest = Get-DestinationPath -Fname $Fname
+  mkdir $dest -Force
   Copy-Item $source -Destination $dest -Recurse -Force
 }
 
