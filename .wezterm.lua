@@ -5,7 +5,6 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
-
 config.window_padding = {
   left = 2,
   right = 2,
@@ -24,10 +23,10 @@ config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 -- config.window_background_image_stretch = "Cover"
 config.window_background_opacity = 1.0
 config.window_background_image =
-  "C:\\Users\\prash\\Documents\\wellpapers\\demon-slayer-zenitsu-agatsuma-god-speed-desktop-wallpaper.jpg"
+  "C:\\Users\\prash\\Documents\\wellpapers\\venom-symbiote-monster-dark-art-desktop-wallpaper.jpg"
 
 config.window_background_image_hsb = {
-  brightness = 0.03,
+  brightness = 0.02,
   hue = 1.0,
   saturation = 1.0,
 }

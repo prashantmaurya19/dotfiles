@@ -14,9 +14,12 @@ $CWD = (Get-Item .).FullName
 $location_pair = @{
   ".wezterm.lua" = "$HOME\";
   "Microsoft.PowerShell_profile.ps1"="$HOME\Documents\PowerShell\";
-  "starship.toml" = "$HOME\.config\"
+  "starship.toml" = "$HOME\.config\";
+  ".glzr\glazewm\config.yaml" = "$HOME\";
+  ".glzr\zebar\starter\with-glazewm.html" = "$HOME\";
+  ".glzr\zebar\starter\with-glazewm.zebar.json" = "$HOME\";
 }
-$ignore = @("stow.ps1","README.md","WindowsTerminalSettings.json")
+# $ignore = @("stow.ps1","README.md","WindowsTerminalSettings.json")
 
 # destination is the real location of folder or file
 # source is the dotfile folder location of folder or file
@@ -39,11 +42,10 @@ function DoBackup(){
 param(
     [string] $Fname
   )
-
   $source = Get-SourcePath -Fname $Fname
   $dest = Get-DestinationPath -Fname $Fname
-
-  # Write-Host "$source <-> $dest"
+  # Write-Host "Debug[S:$source & D:$dest]" -ForegroundColor Cyan
+  $out = New-Item -ItemType Directory -Path $source -Force
   Copy-Item $dest -Destination $source -Recurse -Force
 }
 
@@ -54,32 +56,51 @@ param(
 
   $source = Get-SourcePath -Fname $Fname
   $dest = Get-DestinationPath -Fname $Fname
-  mkdir $dest -Force
+  # mkdir $dest -Force
+  $out = New-Item -ItemType Directory -Path $dest -Force
+  # Write-Host "Debug[S:$source & D:$dest]" -ForegroundColor Cyan
+  if(Test-Path -Path $dest){
+    Remove-Item -Path $dest -Force -Recurse
+  }
   Copy-Item $source -Destination $dest -Recurse -Force
 }
 
+function CheckIsExistDestination(){
+  param(
+    [string] $Fname
+  )
+  return Test-Path -Path (Get-DestinationPath -Fname $Fname)
+}
+
+function CheckIsExistSource(){
+  param(
+    [string] $Fname
+  )
+  return Test-Path -Path (Get-SourcePath -Fname $Fname)
+}
+
 if(-Not($fname -eq "")){
-  if(-Not (Test-Path -Path (Get-SourcePath -Fname $fname))) {
-    Write-Host "$fname is not found!!!!" -ForegroundColor Red
-  }else{
-    if($Backup){
+  if($Backup){
+    Write-Host "$fname -> $( Get-DestinationPath -Fname $fname )" -ForegroundColor Cyan
+    if(-Not (CheckIsExistDestination -Fname $fname)) {
+      Write-Host "$fname is not found destination!!!!" -ForegroundColor Red
+    }else{
       DoBackup -Fname $fname
-    }elseif($Restore){
-      DoRestore -Fname $fname
     }
+  }elseif($Restore){
+    if(-Not (CheckIsExistSource -Fname $fname)) {
+      Write-Host "$fname is not found at source!!!!" -ForegroundColor Red
+    }else{DoRestore -Fname $fname}
+    
   }
 }elseif($All) {
-  foreach($ff in (Get-ChildItem -Path $CWD)){
-    $f = ($ff.FullName.Replace($CWD+"\",""))
-    if(($f -in $ignore) -or -Not $location_pair.ContainsKey($f)){
-      Write-Host $f -ForegroundColor Red
-      continue;
-    }
-    # Write-Host $f -ForegroundColor Green
-    if($Backup){
-      DoBackup -Fname ($ff.FullName.Replace($CWD+"\",""))
-    }elseif($Restore){
-      DoRestore -Fname ($ff.FullName.Replace($CWD+"\",""))
+  foreach($h in $location_pair.GetEnumerator()){
+    if($Backup -and (CheckIsExistDestination -Fname $h.Name)){
+      DoBackup -Fname $h.Name
+      Write-Host "Backup Done for $($h.Name)!!" -ForegroundColor Green
+    }elseif($Restore -and (CheckIsExistSource -Fname $h.Name)){
+      DoRestore -Fname $h.Name
+      Write-Host "Backup Done for $($h.Name)!!" -ForegroundColor Green
     }
   }
 }
