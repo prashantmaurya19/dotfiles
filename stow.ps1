@@ -2,7 +2,8 @@ param(
   [string] $fname="",
   [switch] $All,
   [switch] $Backup,
-  [switch] $Restore
+  [switch] $Restore,
+  [switch] $Debug
 ) 
 if(( $Backup -and $Restore ) -or (-Not $Backup -and -Not $Restore)){
   Write-Host "Pls select one operation at a time!!" -ForegroundColor Red
@@ -23,6 +24,15 @@ $location_pair = @{
 
 # destination is the real location of folder or file
 # source is the dotfile folder location of folder or file
+
+function MakeDirs(){
+  param(
+    [string] $Fname
+  )
+  $directoryPath = Split-Path $Fname
+  # Write-Host "Debug : Folder is $directoryPath" -ForegroundColor Cyan
+  $out = New-Item -ItemType Directory -Path $directoryPath -Force
+}
 
 function Get-SourcePath(){
   param(
@@ -45,8 +55,11 @@ param(
   $source = Get-SourcePath -Fname $Fname
   $dest = Get-DestinationPath -Fname $Fname
   # Write-Host "Debug[S:$source & D:$dest]" -ForegroundColor Cyan
-  $out = New-Item -ItemType Directory -Path $source -Force
-  Copy-Item $dest -Destination $source -Recurse -Force
+  MakeDirs -Fname $source
+  # $out = New-Item -ItemType Directory -Path $source -Force
+  if(-Not $Debug){
+    Copy-Item $dest -Destination $source -Recurse -Force
+  }
 }
 
 function DoRestore(){
@@ -56,13 +69,14 @@ param(
 
   $source = Get-SourcePath -Fname $Fname
   $dest = Get-DestinationPath -Fname $Fname
-  # mkdir $dest -Force
-  $out = New-Item -ItemType Directory -Path $dest -Force
+  MakeDirs -Fname $dest
   # Write-Host "Debug[S:$source & D:$dest]" -ForegroundColor Cyan
   if(Test-Path -Path $dest){
     Remove-Item -Path $dest -Force -Recurse
   }
-  Copy-Item $source -Destination $dest -Recurse -Force
+  if(-Not $Debug){
+    Copy-Item $source -Destination $dest -Recurse -Force
+  }
 }
 
 function CheckIsExistDestination(){
