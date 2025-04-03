@@ -1,5 +1,5 @@
 param(
-  [string] $fname="",
+  [string] $Ns="",
   [switch] $All,
   [switch] $Backup,
   [switch] $Restore,
@@ -11,6 +11,17 @@ if(( $Backup -and $Restore ) -or (-Not $Backup -and -Not $Restore)){
 }
 
 $CWD = (Get-Item .).FullName
+
+$namespace = @{
+  "wezterm"=@(".wezterm.lua");
+  "powershell" =@("Microsoft.PowerShell_profile.ps1");
+  "starship"=@("starship.toml");
+  "glazewm"=@(
+    ".glzr\glazewm\config.yaml",
+    ".glzr\zebar\starter\with-glazewm.html" ,
+    ".glzr\zebar\starter\with-glazewm.zebar.json" 
+  );
+}
 
 $location_pair = @{
   ".wezterm.lua" = "$HOME\";
@@ -93,19 +104,27 @@ function CheckIsExistSource(){
   return Test-Path -Path (Get-SourcePath -Fname $Fname)
 }
 
-if(-Not($fname -eq "")){
-  if($Backup){
-    Write-Host "$fname -> $( Get-DestinationPath -Fname $fname )" -ForegroundColor Cyan
-    if(-Not (CheckIsExistDestination -Fname $fname)) {
-      Write-Host "$fname is not found destination!!!!" -ForegroundColor Red
-    }else{
-      DoBackup -Fname $fname
+if(-Not($Ns -eq "")){
+  if($namespace.ContainsKey($Ns)){
+    foreach($h in $namespace[$Ns]){
+      if($Backup){
+	if(-Not (CheckIsExistDestination -Fname $h)) {
+	  Write-Host "$h is not found destination!!!!" -ForegroundColor Red
+	}else{
+	  DoBackup -Fname $h
+	  Write-Host "Backup Done for $h!!" -ForegroundColor Green
+	}
+      }elseif($Restore){
+	if(-Not (CheckIsExistSource -Fname $h)) {
+	  Write-Host "$location_pair[$h] is not found at source!!!!" -ForegroundColor Red
+	}else{
+	  DoRestore -Fname $h
+	  Write-Host "Restore Done for $h!!" -ForegroundColor Green
+	}
+      }
     }
-  }elseif($Restore){
-    if(-Not (CheckIsExistSource -Fname $fname)) {
-      Write-Host "$fname is not found at source!!!!" -ForegroundColor Red
-    }else{DoRestore -Fname $fname}
-    
+  }else{
+    Write-Error "$Ns is not found!!"
   }
 }elseif($All) {
   foreach($h in $location_pair.GetEnumerator()){

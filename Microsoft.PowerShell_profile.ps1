@@ -1,4 +1,5 @@
 Invoke-Expression (&starship init powershell)
+Import-Module -Name Terminal-Icons
 
 # enviroment variables
 $env:JDTLS_JVM_ARGS="-javaagent:$HOME\AppData\Local\nvim-data\mason\packages\jdtls\lombok.jar"

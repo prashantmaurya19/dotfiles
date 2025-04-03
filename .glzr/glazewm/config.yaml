@@ -250,8 +250,15 @@ keybindings:
   # Launch CMD terminal. Alternatively, use `shell-exec wt` or
   # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
   # Terminal and Git Bash respectively.
+  # - commands: ['shell-exec %ProgramFiles%/WezTerm/wezterm-gui.exe']
   - commands: ['shell-exec %ProgramFiles%/WezTerm/wezterm-gui.exe']
     bindings: ['alt+enter']
+
+  - commands: ['shell-exec explorer']
+    bindings: ['alt+e']
+
+  - commands: ['shell-exec %ProgramFiles%/Google/Chrome/Application/chrome.exe']
+    bindings: ['alt+b']
 
   # Focus the next/previous active workspace defined in `workspaces` config.
   - commands: ['focus --next-active-workspace']
