@@ -11,18 +11,17 @@ format = 'took [$duration](bold yellow)'
 format = "[$path]($style)"
 style = "bold cyan"
 home_symbol = "~"
-truncation_length = 8
+truncation_length = 7
 truncation_symbol = ".../"
 truncate_to_repo = false
 use_os_path_sep = true
 
-# [directory.substitutions]
-# "Documents" = "󰈙 "
-# "Downloads" = " "
-# "Music" = " "
-# "Desktop" = " "
-# "Pictures" = " "
-# "~/Desktop/Prashant" = "PM_HOME"
+[directory.substitutions]
+"Documents" = " 󰈙 "
+"Downloads" = "  "
+"Music" = "  "
+"Desktop" = "  "
+"Pictures" = "  "
 
 [git_branch]
 format = "[$symbol$branch(:$remote_branch)]($style) "
