@@ -116,7 +116,7 @@ config.colors = {
   },
 }
 --keys
-config.leader = { key = "phys:Space", mods = "CTRL", timeout_milliseconds = 1000 }
+config.leader = { key = "phys:Space", mods = "ALT", timeout_milliseconds = 1000 }
 config.keys = {
   -- { key = "a", mods = "LEADER|CTRL", action = act.SendKey({ key = "a", mods = "CTRL" }) },
   { key = "c", mods = "LEADER", action = act.ActivateCopyMode },
@@ -213,7 +213,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 
   -- ensure that the titles fit in the available space,
   -- and that we have room for the edges.
-  title = wezterm.truncate_right(title, max_width - 7)
+  title = wezterm.truncate_right(title, max_width - 4)
 
   return {
     { Background = { Color = edge_foreground } },
