@@ -193,6 +193,7 @@ local function tab_title(tab_info)
   -- in that tab
   return tab_info.active_pane.title
 end
+
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   local edge_background = "#0b0022"
   local background = "#1b1032"
@@ -212,7 +213,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 
   -- ensure that the titles fit in the available space,
   -- and that we have room for the edges.
-  title = wezterm.truncate_right(title, max_width - 2)
+  title = wezterm.truncate_right(title, max_width - 7)
 
   return {
     { Background = { Color = edge_foreground } },
@@ -220,7 +221,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     { Text = SOLID_LEFT_ARROW },
     { Background = { Color = background } },
     { Foreground = { Color = foreground } },
-    { Text = (tab.tab_id + 1) .. ":" .. title },
+    { Text = (tab.tab_index + 1) .. ":" .. title },
     { Background = { Color = edge_background } },
     { Foreground = { Color = edge_foreground } },
     { Text = SOLID_RIGHT_ARROW },
@@ -241,8 +242,6 @@ wezterm.on("update-status", function(window, pane)
   local cmd = pane:get_foreground_process_name()
   cmd = cmd and string.gsub(cmd, "(.*[/\\])(.*)", "%2") or ""
 
-  -- Time
-  -- local time = wezterm.strftime("%H:%M")
   local time = wezterm.strftime("%I:%M %p")
 
   window:set_right_status(wezterm.format({
