@@ -7,23 +7,40 @@ $env:FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
 $env:DESKTOP_WELLPAPER = "C:\Users\prash\Documents\wellpapers\dark-anime-pictures-iwmu3b0sun9r6789.jpg"
 
 $nvim = "$($HOME)\AppData\Local\nvim"
-$todo = "$($HOME)\Documents\prashant\TODO.txt"
 
 $LocalPath = @{
   Doc = "$($HOME)\Documents";
 }
 
-function GotoFolder([System.String] $path){
-  Get-ChildItem $path -Recurse | ? { $_.PSIsContainer } | Invoke-Fzf | Set-Location
+$FZF_SEARCH_PATHS = @( "$($HOME)\Documents")
+
+function GotoFolder([string] $path){
+  Get-ChildItem $path -Recurse | Where-Object { $_.PSIsContainer } | Invoke-Fzf | Set-Location
 }
 
 function GotoDoc{
-  GotoFolder $LocalPath["Doc"]
+  GotoFolder $FZF_SEARCH_PATHS
+}
+
+function RemoveCompelety{
+  param(
+    [string] $Path
+  )
+  Remove-Item $Path -Force -Recurse
 }
 
 Set-Alias -Name godoc -Value GotoDoc
+Set-Alias -Name rmc -Value RemoveCompelety
 
 
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+
 Set-PSReadLineKeyHandler -Chord "Ctrl+p" -Function AcceptSuggestion
+
+Set-PSReadLineKeyHandler -Chord "Ctrl+," -ScriptBlock {
+  [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
+  [Microsoft.PowerShell.PSConsoleReadLine]::Insert('godoc')
+  [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+} -BriefDescription "ctrl+, mapping for godoc "
+
 fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
