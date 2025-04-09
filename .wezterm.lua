@@ -121,7 +121,7 @@ config.keys = {
   -- { key = "a", mods = "LEADER|CTRL", action = act.SendKey({ key = "a", mods = "CTRL" }) },
   { key = "c", mods = "LEADER", action = act.ActivateCopyMode },
   { key = "phys:Space", mods = "LEADER", action = act.ActivateCommandPalette },
-  { key = "s", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+  { key = "x", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
   { key = "v", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
   { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
   { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
@@ -134,8 +134,8 @@ config.keys = {
   { key = "m", mods = "LEADER", action = act.ActivateKeyTable({ name = "move_tab", one_shot = false }) },
   -- Tab keybindings
   { key = "t", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
-  { key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },
-  { key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
+  { key = "a", mods = "LEADER", action = act.ActivateTabRelative(-1) },
+  { key = "s", mods = "LEADER", action = act.ActivateTabRelative(1) },
   { key = "n", mods = "LEADER", action = act.ShowTabNavigator },
   {
     key = "e",
@@ -164,10 +164,10 @@ end
 
 config.key_tables = {
   resize_pane = {
-    { key = "h", action = act.AdjustPaneSize({ "Left", 1 }) },
-    { key = "j", action = act.AdjustPaneSize({ "Down", 1 }) },
-    { key = "k", action = act.AdjustPaneSize({ "Up", 1 }) },
-    { key = "l", action = act.AdjustPaneSize({ "Right", 1 }) },
+    { key = "h", action = act.AdjustPaneSize({ "Left", 2 }) },
+    { key = "j", action = act.AdjustPaneSize({ "Down", 2 }) },
+    { key = "k", action = act.AdjustPaneSize({ "Up", 2 }) },
+    { key = "l", action = act.AdjustPaneSize({ "Right", 2 }) },
     { key = "Escape", action = "PopKeyTable" },
     { key = "Enter", action = "PopKeyTable" },
   },
@@ -242,7 +242,7 @@ wezterm.on("update-status", function(window, pane)
   local cmd = pane:get_foreground_process_name()
   cmd = cmd and string.gsub(cmd, "(.*[/\\])(.*)", "%2") or ""
 
-  local time = wezterm.strftime("%I:%M %p")
+  -- local time = wezterm.strftime("%I:%M %p")
 
   window:set_right_status(wezterm.format({
     -- Wezterm has a built-in nerd fonts
@@ -251,10 +251,10 @@ wezterm.on("update-status", function(window, pane)
     { Text = " | " },
     { Foreground = { Color = "#e0af68" } },
     { Text = wezterm.nerdfonts.fa_code .. " " .. cmd },
-    "ResetAttributes",
-    { Text = " | " },
-    { Text = wezterm.nerdfonts.md_clock .. " " .. time },
-    { Text = "  " },
+    -- "ResetAttributes",
+    -- { Text = " | " },
+    -- { Text = wezterm.nerdfonts.md_clock .. " " .. time },
+    -- { Text = "  " },
   }))
 
   -- Left status (left of the tab line)
