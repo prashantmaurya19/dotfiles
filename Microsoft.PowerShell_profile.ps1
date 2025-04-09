@@ -1,4 +1,8 @@
+function Invoke-Starship-TransientFunction {
+  &starship module character
+}
 Invoke-Expression (&starship init powershell)
+Enable-TransientPrompt
 Import-Module -Name Terminal-Icons
 
 # enviroment variables
@@ -29,8 +33,16 @@ function RemoveCompelety{
   Remove-Item $Path -Force -Recurse
 }
 
+function FnTreeDir(){
+  param(
+    [string]$Path
+  )
+  Get-ChildItem -Path $Path -Recurse -File | ForEach-Object {Write-Host $_.FullName.Replace( (Get-Item .).FullName+"\","")}
+}
+
 Set-Alias -Name godoc -Value GotoDoc
 Set-Alias -Name rmc -Value RemoveCompelety
+Set-Alias -Name treedir -Value FnTreeDir
 
 
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
