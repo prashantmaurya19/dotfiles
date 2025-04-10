@@ -23,13 +23,10 @@
       import * as zebar from "https://esm.sh/zebar@2";
 
       const providers = zebar.createProviderGroup({
-        network: { type: "network" },
+        network: { type: "network", refreshInterval: "2000" },
         glazewm: { type: "glazewm" },
-        cpu: { type: "cpu" },
         date: { type: "date", formatting: "EEEE t - d MMM yyyy" },
-        battery: { type: "battery" },
-        memory: { type: "memory" },
-        weather: { type: "weather" },
+        battery: { type: "battery", refreshInterval: "2000" },
       });
 
       createRoot(document.getElementById("root")).render(<App />);

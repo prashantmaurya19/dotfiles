@@ -10,6 +10,11 @@ if(( $Backup -and $Restore ) -or (-Not $Backup -and -Not $Restore)){
   return;
 }
 
+if(($Ns -eq "") -and -NOT $All){
+  Write-Host "Pls provide -Ns or pass -All option!!" -ForegroundColor Red
+  return;
+}
+
 $CWD = (Get-Item .).FullName
 
 $namespace = @{
@@ -19,7 +24,8 @@ $namespace = @{
   "glazewm"=@(
     ".glzr\glazewm\config.yaml",
     ".glzr\zebar\starter\with-glazewm.html" ,
-    ".glzr\zebar\starter\with-glazewm.zebar.json" 
+    ".glzr\zebar\starter\with-glazewm.zebar.json" ,
+    ".glzr\zebar\starter\styles.css" 
   );
 }
 
@@ -30,6 +36,7 @@ $location_pair = @{
   ".glzr\glazewm\config.yaml" = "$HOME\";
   ".glzr\zebar\starter\with-glazewm.html" = "$HOME\";
   ".glzr\zebar\starter\with-glazewm.zebar.json" = "$HOME\";
+  ".glzr\zebar\starter\styles.css" = "$HOME\";
 }
 # $ignore = @("stow.ps1","README.md","WindowsTerminalSettings.json")
 
@@ -124,7 +131,7 @@ if(-Not($Ns -eq "")){
       }
     }
   }else{
-    Write-Error "$Ns is not found!!"
+    Write-Error "$Ns is not a namespace!!"
   }
 }elseif($All) {
   foreach($h in $location_pair.GetEnumerator()){
