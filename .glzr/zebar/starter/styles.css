@@ -55,6 +55,14 @@ body,
   align-items: center;
 }
 
+.center,
+.right {
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 20px;
+  border: 1px solid wheat;
+}
+
 .center {
   justify-self: center;
 }
@@ -81,7 +89,7 @@ body,
 }
 
 .workspace {
-  background: rgb(255 255 255 / 5%);
+  background: rgb(255 255 255 /15%);
   margin-right: 4px;
   padding: 2px 3px;
   color: rgb(255 255 255 / 90%);
