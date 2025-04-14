@@ -1,2 +1,1 @@
-# My Dotfiles
-Obviosly
+# My Dotfiles for windows 😊
