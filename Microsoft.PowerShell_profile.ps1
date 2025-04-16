@@ -9,6 +9,8 @@ Import-Module -Name Terminal-Icons
 $env:JDTLS_JVM_ARGS="-javaagent:$HOME\AppData\Local\nvim-data\mason\packages\jdtls\lombok.jar"
 $env:FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
 $env:DESKTOP_WELLPAPER = "C:\Users\prash\Documents\wellpapers\dark-anime-pictures-iwmu3b0sun9r6789.jpg"
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-23\"
+# $env:JAVA_HOME = "C:\Program Files\Common Files\Oracle\Java\javapath"
 
 $nvim = "$($HOME)\AppData\Local\nvim"
 
@@ -49,7 +51,7 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory
 
 Set-PSReadLineKeyHandler -Chord "Ctrl+p" -Function AcceptSuggestion
 
-Set-PSReadLineKeyHandler -Chord "Ctrl+," -ScriptBlock {
+Set-PSReadLineKeyHandler -Chord "Alt+," -ScriptBlock {
   [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
   [Microsoft.PowerShell.PSConsoleReadLine]::Insert('godoc')
   [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()

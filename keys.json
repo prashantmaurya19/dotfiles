@@ -1,0 +1,62 @@
+[
+  {
+    "key": "j",
+    "label": "down button pressed",
+    "action": "scrolldown",
+    "id": "e8ea8b03-4581-4c5a-a9a6-d584ffa48657",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "k",
+    "label": "up button pressed",
+    "action": "scrollup",
+    "id": "74bf64d7-0dac-4cf4-83f2-41403d841f2a",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "h",
+    "label": "left button pressed",
+    "action": "scrollleft",
+    "id": "212dd634-49c3-4da0-b64c-0539ae76ad0a",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "l",
+    "label": "right button pressed ",
+    "action": "scrollright",
+    "id": "d3e8a234-936c-4d45-a509-13bd4385663a",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "a",
+    "label": "switch to left tab",
+    "action": "prevtab",
+    "id": "76db00d8-3320-47f9-b194-bfec66c17225",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  },
+  {
+    "key": "s",
+    "label": "switch to right tab",
+    "action": "nexttab",
+    "id": "b34424e4-e74f-4ebd-a33c-d4e7b00fcdfe",
+    "sites": "",
+    "sitesArray": [
+      ""
+    ]
+  }
+]
