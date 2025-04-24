@@ -12,20 +12,21 @@ $env:DESKTOP_WELLPAPER = "C:\Users\prash\Documents\wellpapers\dark-anime-picture
 $env:JAVA_HOME = "C:\Program Files\Java\jdk-23\"
 # $env:JAVA_HOME = "C:\Program Files\Common Files\Oracle\Java\javapath"
 
-$nvim = "$($HOME)\AppData\Local\nvim"
+$nvim = "$($HOME)\AppData\Local\nvim\"
+$DocPath = "$($HOME)\Documents\"
+$DownloadsPath = "$($HOME)\Downloads\"
 
-$LocalPath = @{
-  Doc = "$($HOME)\Documents";
-}
+$FZF_SEARCH_PATHS = @($nvim, $DocPath,$DownloadsPath) 
 
-$FZF_SEARCH_PATHS = @( "$($HOME)\Documents")
+function GotoFolder() {
+    # Get-ChildItem -Path $FZF_SEARCH_PATHS -Recurse | Where-Object { $_.PSIsContainer } | Invoke-Fzf | Set-Location
+  $AllPaths = @($FZF_SEARCH_PATHS) # Start with the search paths themselves
 
-function GotoFolder([string] $path){
-  Get-ChildItem $path -Recurse | Where-Object { $_.PSIsContainer } | Invoke-Fzf | Set-Location
-}
+  foreach ($path in $FZF_SEARCH_PATHS) {
+    $AllPaths += (Get-ChildItem -Path $path -Directory -Recurse | Select-Object -ExpandProperty FullName)
+  }
 
-function GotoDoc{
-  GotoFolder $FZF_SEARCH_PATHS
+  $AllPaths | Select-Object -Unique | Invoke-Fzf | Set-Location
 }
 
 function RemoveCompelety{
@@ -42,9 +43,10 @@ function FnTreeDir(){
   Get-ChildItem -Path $Path -Recurse -File | ForEach-Object {Write-Host $_.FullName.Replace( (Get-Item .).FullName+"\","")}
 }
 
-Set-Alias -Name godoc -Value GotoDoc
+Set-Alias -Name godoc -Value GotoFolder
 Set-Alias -Name rmc -Value RemoveCompelety
 Set-Alias -Name treedir -Value FnTreeDir
+Set-Alias -Name nvim -Value v
 
 
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
@@ -55,6 +57,7 @@ Set-PSReadLineKeyHandler -Chord "Alt+," -ScriptBlock {
   [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
   [Microsoft.PowerShell.PSConsoleReadLine]::Insert('godoc')
   [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+  # GotoFolder $FZF_SEARCH_PATHS
 } -BriefDescription "ctrl+, mapping for godoc "
 
 fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression

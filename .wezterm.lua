@@ -1,6 +1,17 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
+local backgroud = {
+  wellpapers_folder = "C:\\Users\\prash\\Documents\\wellpapers\\",
+  wellpapers = {
+    ["1"] = "venom-symbiote-monster-dark-art-desktop-wallpaper.jpg",
+    ["2"] = "pokeball-glow-black-background-minimal-pokemon-desktop-wallpaper-4K.jpg",
+    ["3"] = "dragon-ball-broly-wrathful-roar-desktop-wallpaper.jpg",
+    ["4"] = "aesthetic-cityscape-sunset-bridge-desktop-wallpaper-4k.jpg",
+  },
+  current_wellpaper = "4",
+}
+
 -- The filled in variant of the < symbol
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
@@ -25,15 +36,15 @@ config.color_scheme = "Campbell (Gogh)"
 config.font = wezterm.font("FiraMono Nerd Font Mono")
 config.default_prog = { "pwsh.exe" }
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
+config.adjust_window_size_when_changing_font_size = false
 
 -- config.window_background_image_stretch = "Cover"
 config.window_background_opacity = 1.0
-config.window_background_image =
-  "C:\\Users\\prash\\Documents\\wellpapers\\venom-symbiote-monster-dark-art-desktop-wallpaper.jpg"
+config.window_background_image = backgroud.wellpapers_folder .. backgroud.wellpapers[backgroud.current_wellpaper]
 
 config.window_background_image_hsb = {
-  brightness = 0.02,
-  hue = 1.0,
+  brightness = 0.03,
+  hue = 1,
   saturation = 1.0,
 }
 config.inactive_pane_hsb = {
@@ -130,13 +141,11 @@ config.keys = {
   { key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
   { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
   { key = "o", mods = "LEADER", action = act.RotatePanes("Clockwise") },
-  { key = "r", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
-  { key = "m", mods = "LEADER", action = act.ActivateKeyTable({ name = "move_tab", one_shot = false }) },
   -- Tab keybindings
-  { key = "t", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
+  { key = "n", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
   { key = "a", mods = "LEADER", action = act.ActivateTabRelative(-1) },
   { key = "s", mods = "LEADER", action = act.ActivateTabRelative(1) },
-  { key = "n", mods = "LEADER", action = act.ShowTabNavigator },
+  { key = "f", mods = "LEADER", action = act.ShowTabNavigator },
   {
     key = "e",
     mods = "LEADER",
@@ -153,6 +162,9 @@ config.keys = {
       end),
     }),
   },
+  { key = "r", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
+  { key = "m", mods = "LEADER", action = act.ActivateKeyTable({ name = "move_tab", one_shot = false }) },
+  { key = "t", mods = "LEADER", action = act.ActivateKeyTable({ name = "text_zoom_in_out", one_shot = false }) },
 }
 for i = 1, 9 do
   table.insert(config.keys, {
@@ -168,6 +180,12 @@ config.key_tables = {
     { key = "j", action = act.AdjustPaneSize({ "Down", 2 }) },
     { key = "k", action = act.AdjustPaneSize({ "Up", 2 }) },
     { key = "l", action = act.AdjustPaneSize({ "Right", 2 }) },
+    { key = "Escape", action = "PopKeyTable" },
+    { key = "Enter", action = "PopKeyTable" },
+  },
+  text_zoom_in_out = {
+    { key = "-", action = act.DecreaseFontSize },
+    { key = "=", action = act.IncreaseFontSize },
     { key = "Escape", action = "PopKeyTable" },
     { key = "Enter", action = "PopKeyTable" },
   },
