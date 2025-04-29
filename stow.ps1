@@ -22,21 +22,24 @@ $namespace = @{
   "powershell" =@("Microsoft.PowerShell_profile.ps1");
   "starship"=@("starship.toml");
   "glazewm"=@(
-    ".glzr\glazewm\config.yaml",
-    ".glzr\zebar\starter\with-glazewm.html" ,
-    ".glzr\zebar\starter\with-glazewm.zebar.json" ,
-    ".glzr\zebar\starter\styles.css" 
+    "config.yaml",
+    "with-glazewm.html" ,
+    "with-glazewm.zebar.json" ,
+    "styles.css" 
   );
+  # "yazi"=@(
+  #   "AppData\yazi\config\"
+  # );
 }
 
 $location_pair = @{
   ".wezterm.lua" = "$HOME\";
   "Microsoft.PowerShell_profile.ps1"="$HOME\Documents\PowerShell\";
   "starship.toml" = "$HOME\.config\";
-  ".glzr\glazewm\config.yaml" = "$HOME\";
-  ".glzr\zebar\starter\with-glazewm.html" = "$HOME\";
-  ".glzr\zebar\starter\with-glazewm.zebar.json" = "$HOME\";
-  ".glzr\zebar\starter\styles.css" = "$HOME\";
+  "config.yaml" = "$HOME\.glzr\glazewm\";
+  "with-glazewm.html" = "$HOME\.glzr\zebar\starter\";
+  "with-glazewm.zebar.json" = "$HOME\glzr\zebar\starter\";
+  "styles.css" = "$HOME\.glzr\zebar\starter\";
 }
 # $ignore = @("stow.ps1","README.md","WindowsTerminalSettings.json")
 

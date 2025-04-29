@@ -43,10 +43,20 @@ function FnTreeDir(){
   Get-ChildItem -Path $Path -Recurse -File | ForEach-Object {Write-Host $_.FullName.Replace( (Get-Item .).FullName+"\","")}
 }
 
+function y {
+  $tmp = [System.IO.Path]::GetTempFileName()
+  yazi $args --cwd-file="$tmp"
+  $cwd = Get-Content -Path $tmp -Encoding UTF8
+  if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
+    Set-Location -LiteralPath ([System.IO.Path]::GetFullPath($cwd))
+  }
+  Remove-Item -Path $tmp
+}
+
 Set-Alias -Name godoc -Value GotoFolder
 Set-Alias -Name rmc -Value RemoveCompelety
 Set-Alias -Name treedir -Value FnTreeDir
-Set-Alias -Name nvim -Value v
+Set-Alias -Name v -Value nvim
 
 
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
