@@ -19,13 +19,13 @@ $CWD = (Get-Item .).FullName
 
 $namespace = @{
   "wezterm"=@(".wezterm.lua");
-  "powershell" =@("Microsoft.PowerShell_profile.ps1");
-  "starship"=@("starship.toml");
+  "powershell" =@("Documents\PowerShell\Microsoft.PowerShell_profile.ps1");
+  "starship"=@(".config\starship.toml");
   "glazewm"=@(
-    "config.yaml",
-    "with-glazewm.html" ,
-    "with-glazewm.zebar.json" ,
-    "styles.css" 
+    ".glzr\glazewm\config.yaml",
+    ".glzr\zebar\starter\with-glazewm.html" ,
+    ".glzr\zebar\starter\with-glazewm.zebar.json" ,
+    ".glzr\zebar\starter\styles.css" 
   );
   # "yazi"=@(
   #   "AppData\yazi\config\"
@@ -36,10 +36,10 @@ $location_pair = @{
   ".wezterm.lua" = "$HOME\";
   "Microsoft.PowerShell_profile.ps1"="$HOME\Documents\PowerShell\";
   "starship.toml" = "$HOME\.config\";
-  "config.yaml" = "$HOME\.glzr\glazewm\";
-  "with-glazewm.html" = "$HOME\.glzr\zebar\starter\";
-  "with-glazewm.zebar.json" = "$HOME\glzr\zebar\starter\";
-  "styles.css" = "$HOME\.glzr\zebar\starter\";
+  ".glzr\glazewm\config.yaml" = "$HOME\";
+  ".glzr\zebar\starter\with-glazewm.html" = "$HOME\";
+  ".glzr\zebar\starter\with-glazewm.zebar.json" = "$HOME\";
+  ".glzr\zebar\starter\styles.css" = "$HOME\";
 }
 # $ignore = @("stow.ps1","README.md","WindowsTerminalSettings.json")
 
@@ -144,6 +144,8 @@ if(-Not($Ns -eq "")){
     }elseif($Restore -and (CheckIsExistSource -Fname $h.Name)){
       DoRestore -Fname $h.Name
       Write-Host "Backup Done for $($h.Name)!!" -ForegroundColor Green
+    }else{
+      Write-Host "$($h.Name) is not found at source!!!!" -ForegroundColor Red
     }
   }
 }
