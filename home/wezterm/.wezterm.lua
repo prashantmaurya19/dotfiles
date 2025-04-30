@@ -201,7 +201,7 @@ config.key_tables = {
 config.use_fancy_tab_bar = false
 config.status_update_interval = 1000
 config.tab_bar_at_bottom = true
-local function tab_title(tab_info)
+local function tab_title(tab_info,default)
   local title = tab_info.tab_title
   -- if the tab title is explicitly set, take that
   if title and #title > 0 then
@@ -209,9 +209,11 @@ local function tab_title(tab_info)
   end
   -- Otherwise, use the title from the active pane
   -- in that tab
-  return tab_info.active_pane.title
+  return default and tab_info.active_pane.title or default
 end
-
+local function basename(s)
+  return string.gsub(s, "(.*[/\\])(.*)", "%2")
+end
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
   local edge_background = "#0b0022"
   local background = "#1b1032"
@@ -226,8 +228,8 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
   end
 
   local edge_foreground = background
-
-  local title = tab_title(tab)
+  local pane = tab.active_pane
+  local title = tab_title(tab,basename(pane.foreground_process_name) .. " " .. pane.pane_id)
 
   -- ensure that the titles fit in the available space,
   -- and that we have room for the edges.

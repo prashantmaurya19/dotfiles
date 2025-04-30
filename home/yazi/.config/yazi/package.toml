@@ -1,0 +1,22 @@
+[plugin]
+deps = []
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-frappe"
+rev = "68326b4"
+hash = "7340b4b215543e846a271256bea7cfe1"
+
+[[flavor.deps]]
+use = "kmlupreti/ayu-dark"
+rev = "5f600aa"
+hash = "d5a1a9e40f43faceca48a00d7bda6be2"
+
+[[flavor.deps]]
+use = "muratoffalex/kanagawa-lotus"
+rev = "d84d61a"
+hash = "ae11bf26f23c51f85cb5c44df3a5daaa"
+
+[[flavor.deps]]
+use = "PinThePenguinOne/sunset"
+rev = "64ad82e"
+hash = "332f6fe47b831a59c59ffd837420ca00"
