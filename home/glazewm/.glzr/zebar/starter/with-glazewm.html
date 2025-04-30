@@ -132,13 +132,6 @@
                 </>
               )}
 
-              {output.network && (
-                <div className="network">
-                  {getNetworkIcon(output.network)}
-                  {output.network.defaultGateway?.ssid}
-                </div>
-              )}
-
               {output.battery && (
                 <div className="battery">
                   {/* Show icon for whether battery is charging. */}
