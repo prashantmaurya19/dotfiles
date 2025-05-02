@@ -201,7 +201,7 @@ config.key_tables = {
 config.use_fancy_tab_bar = false
 config.status_update_interval = 1000
 config.tab_bar_at_bottom = true
-local function tab_title(tab_info,default)
+local function tab_title(tab_info)
   local title = tab_info.tab_title
   -- if the tab title is explicitly set, take that
   if title and #title > 0 then
@@ -209,7 +209,7 @@ local function tab_title(tab_info,default)
   end
   -- Otherwise, use the title from the active pane
   -- in that tab
-  return default and tab_info.active_pane.title or default
+  return tab_info.active_pane.title
 end
 local function basename(s)
   return string.gsub(s, "(.*[/\\])(.*)", "%2")
@@ -228,8 +228,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
   end
 
   local edge_foreground = background
-  local pane = tab.active_pane
-  local title = tab_title(tab,basename(pane.foreground_process_name) .. " " .. pane.pane_id)
+  local title = tab_title(tab)
 
   -- ensure that the titles fit in the available space,
   -- and that we have room for the edges.
@@ -247,6 +246,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     { Text = SOLID_RIGHT_ARROW },
   }
 end)
+
 wezterm.on("update-status", function(window, pane)
   -- Workspace name
   local stat = window:active_workspace()
@@ -259,25 +259,18 @@ wezterm.on("update-status", function(window, pane)
     stat = "LDR"
     stat_color = "#bb9af7"
   end
-  local cmd = pane:get_foreground_process_name()
-  cmd = cmd and string.gsub(cmd, "(.*[/\\])(.*)", "%2") or ""
 
-  -- local time = wezterm.strftime("%I:%M %p")
+  local cmd = pane:get_foreground_process_name()
+  cmd = cmd and basename(cmd) or "<!>"
+
+  pane:window():active_tab():set_title(cmd)
 
   window:set_right_status(wezterm.format({
-    -- Wezterm has a built-in nerd fonts
-    -- https://wezfurlong.org/wezterm/config/lua/wezterm/nerdfonts.html
-    -- { Text = wezterm.nerdfonts.md_folder .. "  " .. cwd },
     { Text = " | " },
     { Foreground = { Color = "#e0af68" } },
     { Text = wezterm.nerdfonts.fa_code .. " " .. cmd },
-    -- "ResetAttributes",
-    -- { Text = " | " },
-    -- { Text = wezterm.nerdfonts.md_clock .. " " .. time },
-    -- { Text = "  " },
   }))
 
-  -- Left status (left of the tab line)
   window:set_left_status(wezterm.format({
     { Foreground = { Color = stat_color } },
     { Text = " " },

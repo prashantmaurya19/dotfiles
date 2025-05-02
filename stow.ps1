@@ -1,14 +1,7 @@
 param(
   [string] $Ns="",
-  [switch] $All,
-  [switch] $Backup,
-  [switch] $Restore,
-  [switch] $Debug
+  [switch] $All
 ) 
-if(( $Backup -and $Restore ) -or (-Not $Backup -and -Not $Restore)){
-  Write-Host "Pls select one operation at a time!!" -ForegroundColor Red
-  return;
-}
 
 if(($Ns -eq "") -and -NOT $All){
   Write-Host "Pls provide -Ns or pass -All option!!" -ForegroundColor Red
@@ -16,8 +9,6 @@ if(($Ns -eq "") -and -NOT $All){
 }
 $CWD = (Get-Item .).FullName
 $config_dir = "$CWD\home"
-# destination is the real location of folder or file
-# source is the dotfile folder location of folder or file
 
 function MakeDirs(){
   param(
@@ -36,9 +27,6 @@ function Get-SourcePath(){
 }
 
 function Get-DestinationPath(){
-  # param(
-  #   [string] $namespace
-  # )
   return "$HOME\"
   # return "$CWD\test"
 }
@@ -59,10 +47,13 @@ param(
   $dest = Get-DestinationPath
   # MakeDirs -Fname $dest
   # Write-Host "Debug[S:$source & D:$dest]" -ForegroundColor Cyan
-  # if(Test-Path -Path $dest){
-  #   Remove-Item -Path $dest -Force -Recurse
-  # }
+  if(-Not(Test-Path -Path (Get-SourcePath -Namespace $Namespace))){
+    Write-Host "$Namespace config Not Found!!!" -ForegroundColor Red
+    return
+  }
   Copy-Item $source -Destination $dest -Recurse -Force
+  Write-Host "$Namespace config Transferred successfully!!!" -ForegroundColor Green
 }
 
 DoRestore -Namespace $Ns
+# all option remain to implement
