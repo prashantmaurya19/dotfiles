@@ -1,6 +1,7 @@
 function Invoke-Starship-TransientFunction {
   &starship module character
 }
+
 Invoke-Expression (&starship init powershell)
 Enable-TransientPrompt
 Import-Module -Name Terminal-Icons
@@ -10,6 +11,7 @@ $env:JDTLS_JVM_ARGS="-javaagent:$HOME\AppData\Local\nvim-data\mason\packages\jdt
 $env:FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
 $env:DESKTOP_WELLPAPER = "C:\Users\prash\Documents\wellpapers\dark-anime-pictures-iwmu3b0sun9r6789.jpg"
 $env:JAVA_HOME = "C:\Program Files\Java\jdk-23\"
+$env:YAZI_CONFIG_HOME = "C:\Users\prash\.config\yazi\"
 # $env:JAVA_HOME = "C:\Program Files\Common Files\Oracle\Java\javapath"
 
 $nvim = "$($HOME)\AppData\Local\nvim\"

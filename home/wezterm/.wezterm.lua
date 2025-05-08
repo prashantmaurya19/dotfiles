@@ -1,16 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
-local backgroud = {
-  wellpapers_folder = "C:\\Users\\prash\\Documents\\wellpapers\\",
-  wellpapers = {
-    ["1"] = "venom-symbiote-monster-dark-art-desktop-wallpaper.jpg",
-    ["2"] = "pokeball-glow-black-background-minimal-pokemon-desktop-wallpaper-4K.jpg",
-    ["3"] = "dragon-ball-broly-wrathful-roar-desktop-wallpaper.jpg",
-    ["4"] = "aesthetic-cityscape-sunset-bridge-desktop-wallpaper-4k.jpg",
-  },
-  current_wellpaper = "4",
-}
 
 -- The filled in variant of the < symbol
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
@@ -24,7 +14,7 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 config.window_padding = {
   left = 2,
-  right = 2,
+  right = 0,
   top = 0,
   bottom = 0,
 }
@@ -39,9 +29,9 @@ config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.adjust_window_size_when_changing_font_size = false
 
 -- config.window_background_image_stretch = "Cover"
-config.window_background_opacity = 1.0
-config.window_background_image = backgroud.wellpapers_folder .. backgroud.wellpapers[backgroud.current_wellpaper]
-
+config.window_background_opacity = .9
+-- config.window_background_opacity = 0
+-- config.win32_system_backdrop = 'Tabbed'
 config.window_background_image_hsb = {
   brightness = 0.03,
   hue = 1,
