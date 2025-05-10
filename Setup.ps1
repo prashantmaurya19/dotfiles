@@ -70,14 +70,12 @@ function Install-Packages(){
     "wez.wezterm",
     "Neovim.Neovim",
     "Starship.Starship",
-    "Postman.Postman",
     "junegunn.fzf",
     "zig.zig",
     "Oracle.JDK.23",
     "Python.Python.3.13",
     "Microsoft.VisualStudioCode",
     "CharlesMilette.TranslucentTB",
-    "Microsoft.WindowsTerminal",
     "RARLab.WinRAR"
   )
   foreach ($item in $mypackages) {
@@ -87,4 +85,4 @@ function Install-Packages(){
 
 Install-Packages
 
-& .\stow.ps1 -All -Restore
+& .\stow.ps1 -All

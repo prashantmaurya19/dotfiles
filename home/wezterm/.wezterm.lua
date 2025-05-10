@@ -1,7 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
-
 -- The filled in variant of the < symbol
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
@@ -10,6 +9,12 @@ local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
+
+-- local gpus = wezterm.gui.enumerate_gpus()
+
+-- config.webgpu_preferred_adapter = gpus[1]
+config.front_end = 'WebGpu'
+config.webgpu_power_preference = "HighPerformance"
 
 -- This is where you actually apply your config choices
 config.window_padding = {
