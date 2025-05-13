@@ -13,7 +13,7 @@ local config = wezterm.config_builder()
 -- local gpus = wezterm.gui.enumerate_gpus()
 
 -- config.webgpu_preferred_adapter = gpus[1]
-config.front_end = 'WebGpu'
+config.front_end = "WebGpu"
 config.webgpu_power_preference = "HighPerformance"
 
 -- This is where you actually apply your config choices
@@ -34,7 +34,7 @@ config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.adjust_window_size_when_changing_font_size = false
 
 -- config.window_background_image_stretch = "Cover"
-config.window_background_opacity = .9
+config.window_background_opacity = 0.9
 -- config.window_background_opacity = 0
 -- config.win32_system_backdrop = 'Tabbed'
 config.window_background_image_hsb = {
@@ -141,6 +141,14 @@ config.keys = {
   { key = "a", mods = "LEADER", action = act.ActivateTabRelative(-1) },
   { key = "s", mods = "LEADER", action = act.ActivateTabRelative(1) },
   { key = "f", mods = "LEADER", action = act.ShowTabNavigator },
+  { key = "v", mods = "CTRL", action = act.PasteFrom("Clipboard") },
+  {
+    {
+      key = "y",
+      mods = "CTRL",
+      action = wezterm.action.CopyTo("ClipboardAndPrimarySelection"),
+    },
+  },
   {
     key = "e",
     mods = "LEADER",
