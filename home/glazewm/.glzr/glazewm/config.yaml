@@ -226,8 +226,8 @@ keybindings:
     bindings: ['alt+shift+space']
 
   # Change the focused window to be tiling.
-  - commands: ['toggle-tiling']
-    bindings: ['alt+t']
+  # - commands: ['toggle-tiling']
+  #   bindings: ['alt+t']
 
   # Change the focused window to be fullscreen.
   - commands: ['toggle-fullscreen']
@@ -273,8 +273,8 @@ keybindings:
     bindings: ['alt+a']
 
   # Focus the workspace that last had focus.
-  - commands: ['focus --recent-workspace']
-    bindings: ['alt+d']
+  # - commands: ['focus --recent-workspace']
+  #   bindings: ['alt+d']
 
   # Change focus to a workspace defined in `workspaces` config.
   - commands: ['focus --workspace 1']

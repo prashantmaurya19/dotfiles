@@ -12,10 +12,14 @@ $env:FZF_DEFAULT_OPTS='--height 40% --layout reverse --border'
 $env:DESKTOP_WELLPAPER = "C:\Users\prash\Documents\wellpapers\dark-anime-pictures-iwmu3b0sun9r6789.jpg"
 $env:JAVA_HOME = "C:\Program Files\Java\jdk-23\"
 $env:YAZI_CONFIG_HOME = "C:\Users\prash\.config\yazi\"
-# $env:JAVA_HOME = "C:\Program Files\Common Files\Oracle\Java\javapath"
+$env:EDITOR = "nvim "
+$env:YAZI_FILE_ONE  = "C:\Program Files\Git\usr\bin\file.exe"
 
+# Write-Host "$(%HOME%) , $(%EDITOR%)"
+
+$PMHOME = "D:"
 $nvim = "$($HOME)\AppData\Local\nvim\"
-$DocPath = "$($HOME)\Documents\"
+$DocPath = "$($PMHOME)\Documents\"
 $DownloadsPath = "$($HOME)\Downloads\"
 
 $FZF_SEARCH_PATHS = @($nvim, $DocPath,$DownloadsPath) 
