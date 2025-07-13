@@ -1,9 +1,9 @@
-function Invoke-Starship-TransientFunction {
-  &starship module character
-}
+# function Invoke-Starship-TransientFunction {
+#   &starship module character
+# }
 
 Invoke-Expression (&starship init powershell)
-Enable-TransientPrompt
+# Enable-TransientPrompt
 Import-Module -Name Terminal-Icons
 
 # enviroment variables
