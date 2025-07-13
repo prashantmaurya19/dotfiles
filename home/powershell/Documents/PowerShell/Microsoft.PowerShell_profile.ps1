@@ -17,12 +17,10 @@ $env:YAZI_FILE_ONE  = "C:\Program Files\Git\usr\bin\file.exe"
 
 # Write-Host "$(%HOME%) , $(%EDITOR%)"
 
-$PMHOME = "D:"
-$nvim = "$($HOME)\AppData\Local\nvim\"
-$DocPath = "$($PMHOME)\Documents\"
+$DocPath = "$($HOME)\Documents\"
 $DownloadsPath = "$($HOME)\Downloads\"
 
-$FZF_SEARCH_PATHS = @($nvim, $DocPath,$DownloadsPath) 
+$FZF_SEARCH_PATHS = @($DocPath,$DownloadsPath) 
 
 function GotoFolder() {
     # Get-ChildItem -Path $FZF_SEARCH_PATHS -Recurse | Where-Object { $_.PSIsContainer } | Invoke-Fzf | Set-Location
@@ -75,5 +73,3 @@ Set-PSReadLineKeyHandler -Chord "Alt+," -ScriptBlock {
   [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
   # GotoFolder $FZF_SEARCH_PATHS
 } -BriefDescription "ctrl+, mapping for godoc "
-
-fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression

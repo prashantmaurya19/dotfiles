@@ -1,33 +1,33 @@
+# add_newline = true
 
 format = '''
-$directory  $cmd_duration
-$conda$git_branch[](#00DD00) '''
+$character$directory$conda$git_branch'''
+
+right_format='''$cmd_duration'''
 
 [cmd_duration]
 min_time = 500
 format = 'took [$duration](bold yellow)'
 
+[character]
+format = "$symbol"
+success_symbol = "[➜](bold green) "
+error_symbol = "[➜](bold red)"
+
 [directory]
-format = "[$path]($style)"
+format = "[$path]($style) "
 style = "bold cyan"
-home_symbol = "~"
-truncation_length = 7
-truncation_symbol = ".../"
+truncation_length = 1
+truncation_symbol = ""
 truncate_to_repo = false
 use_os_path_sep = true
 
-[directory.substitutions]
-"Documents" = " 󰈙 "
-"Downloads" = "  "
-"Music" = "  "
-"Desktop" = "  "
-"Pictures" = "  "
-
 [git_branch]
-format = "[$symbol$branch(:$remote_branch)]($style) "
+format = '[git:](green)[\(](white)[$branch]($style)[\)](white) '
 symbol = " "
-style = "bold purple"
+style = "purple"
 
 [conda]
-format = '[$symbol$environment ](dimmed green) '
+format = '[conda:](green)[\(](white)[$environment]($style)[\)](white) '
 symbol = ' '
+style = "purple"

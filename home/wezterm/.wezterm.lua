@@ -143,11 +143,9 @@ config.keys = {
   { key = "f", mods = "LEADER", action = act.ShowTabNavigator },
   { key = "v", mods = "CTRL", action = act.PasteFrom("Clipboard") },
   {
-    {
-      key = "y",
-      mods = "CTRL",
-      action = wezterm.action.CopyTo("ClipboardAndPrimarySelection"),
-    },
+    key = "y",
+    mods = "CTRL",
+    action = wezterm.action.CopyTo("ClipboardAndPrimarySelection")
   },
   {
     key = "e",
@@ -169,6 +167,7 @@ config.keys = {
   { key = "m", mods = "LEADER", action = act.ActivateKeyTable({ name = "move_tab", one_shot = false }) },
   { key = "t", mods = "LEADER", action = act.ActivateKeyTable({ name = "text_zoom_in_out", one_shot = false }) },
 }
+
 for i = 1, 9 do
   table.insert(config.keys, {
     key = tostring(i),
