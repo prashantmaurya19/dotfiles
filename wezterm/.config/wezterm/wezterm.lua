@@ -66,13 +66,15 @@ config.colors = {
 local mod_key = "WIN"
 config.keys = {
   -- { key = "a", mods = "WIN|CTRL", action = act.SendKey({ key = "a", mods = "CTRL" }) },
-  { key = "c", mods = mod_key, action = act.ActivateCopyMode },
+  { key = "c", mods = "CTRL|SHIFT", action = act.ActivateCopyMode },
   { key = "u", mods = mod_key, action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
   { key = "v", mods = mod_key, action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
   { key = "h", mods = mod_key, action = act.ActivatePaneDirection("Left") },
   { key = "j", mods = mod_key, action = act.ActivatePaneDirection("Down") },
   { key = "k", mods = mod_key, action = act.ActivatePaneDirection("Up") },
   { key = "l", mods = mod_key, action = act.ActivatePaneDirection("Right") },
+  { key = "Tab", mods = "CTRL", action = act.DisableDefaultAssignment },
+  { key = "Tab", mods = "CTRL|SHIFT", action = act.DisableDefaultAssignment },
   { key = "w", mods = "ALT", action = act.CloseCurrentPane({ confirm = true }) },
   { key = "z", mods = "ALT", action = act.TogglePaneZoomState },
   { key = "o", mods = mod_key, action = act.RotatePanes("Clockwise") },
@@ -111,13 +113,14 @@ config.keys = {
   --   }),
   -- },
   {
-    key = "phys:Space",
-    mods = mod_key,
+    -- key = "phys:Space",
+    key = ";",
+    mods = "ALT",
     action = act.ShowLauncherArgs({
       flags = "FUZZY|WORKSPACES",
     }),
   },
-  { key = "r", mods = mod_key, action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
+  { key = "r", mods = "CTRL|SHIFT", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
 }
 
 for i = 1, 9 do

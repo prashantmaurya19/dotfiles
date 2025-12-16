@@ -1,4 +1,5 @@
 return {
+  { "https://github.com/github/copilot.vim" },
   "https://github.com/onsails/lspkind.nvim.git",
   -- "rambhosale/cmp-bootstrap.nvim",
   "neovim/nvim-lspconfig",

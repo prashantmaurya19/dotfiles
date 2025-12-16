@@ -26,7 +26,7 @@
     // Choose the order of the modules
     "modules-center": ["clock"],
     "modules-left": ["sway/workspaces"],
-    "modules-right": ["sway/mode","keyboard-state","custom/audio","backlight","network","battery","custom/logout"],
+    "modules-right": ["sway/mode","keyboard-state","custom/audio","network","battery","custom/logout"],
 
     // Configuration for individual modules
      "sway/workspaces": {
@@ -48,7 +48,7 @@
             "warning": 30,
             "critical": 15,
         },
-        "format": "<span foreground='white'></span> {icon} {capacity}%",
+        "format": "{icon} {capacity}%",
         "format-charging": "󰂈 {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{time} {icon}",
@@ -59,7 +59,7 @@
 
     "custom/logout": {
       "on-click": "wlogout -p layer-shell",
-      "format": "<span foreground='white'></span>  ",
+      "format": "",
     },
 
     "sway/mode": {
@@ -83,23 +83,23 @@
 
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "<span foreground='white'></span> {icon} {essid}",
+        "format-wifi": "{icon} {essid}",
         "format-ethernet": "Connected  ",
         "tooltip-format": "{ifname}: {gwaddr}",
         "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "<span foreground='white'></span> 󰤮 No Wifi",
-        "format-alt": "<span foreground='white'></span> {ifname}:{essid}@{ipaddr}/{cidr}",
+        "format-disconnected": "󰤮 No Wifi",
+        "format-alt": "{ifname}:{essid}@{ipaddr}/{cidr}",
 	"format-icons" : ["󰤟","󰤢","󰤥","󰤨"]
     },
 
     "backlight": {
         //"device": "intel_backlight",
-        "format": "<span foreground='white'></span> {icon} {percent}%",
+        "format": "{icon} {percent}%",
         "format-icons": ["󰃞", "󰃟","󰃝","󰃠"]
     },
 
     "custom/audio": {
-        "format": "<span foreground='white'></span> {}",
+        "format": "{}",
         "signal": 8,
         "interval": "once",
         "exec": "~/.config/sway/audio.sh",

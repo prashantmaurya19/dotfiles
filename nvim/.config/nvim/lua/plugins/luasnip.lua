@@ -23,7 +23,7 @@ return {
     -- local conds = require("luasnip.extras.conditions")
     -- local conds_expand = require("luasnip.extras.conditions.expand")
     --keybinding
-    vim.keymap.set({ "i", "s" }, "<Tab>", function()
+    vim.keymap.set({ "i", "s" }, "<C-Tab>", function()
       if ls.expand_or_jumpable() then
         ls.expand_or_jump()
       end

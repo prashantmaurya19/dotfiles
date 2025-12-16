@@ -21,6 +21,7 @@ return {
           javascript = { "prettier" },
           javascriptreact = { "prettier" },
           json = { "prettier" },
+          markdown = { "prettier" },
           xml = { "xmlformatter" },
           java = { "google-java-format" },
           sh = { "shfmt" },

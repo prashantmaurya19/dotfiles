@@ -7,6 +7,16 @@ return {
     "MunifTanjim/nui.nvim",
   },
   opts = {
+    lang = "java",
+    hooks = {
+      ---@type fun()[]
+      ["enter"] = {
+        function()
+          -- vim.cmd("silent! %foldopen!")
+          vim.cmd("Copilot disable")
+        end,
+      },
+    },
     -- configuration goes here
   },
 }

@@ -197,6 +197,7 @@ IGNORED_PATH_DIRS=(
   "$HOME/.fonts"
   "$HOME/.gnupg"
   "$HOME/.m2"
+  "$HOME/.bun"
   "$HOME/.mongodb"
   "$HOME/.npm"
   "$HOME/.pki"
@@ -287,7 +288,6 @@ alias y='yazi'
 
 bind -x '"\e,":"_fzf_open_folder"'
 bind -x '"\e.":"_fzf_open_file"'
-bind -x '"\e;":"cls"'
 bind -x '"\em":"_fzf_history_search_and_insert"'
 
 export EDITOR="nvim"
@@ -325,3 +325,6 @@ if [ -d "$FNM_PATH" ]; then
 fi
 
 # source -- ~/.local/share/blesh/ble.sh
+
+# opencode
+export PATH=/home/prashant/.opencode/bin:$PATH

@@ -6,6 +6,18 @@ vim.opt.cursorline = true
 vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.opt.clipboard = "unnamedplus"
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+-- vim.g.opencode_opts = {
+--   provider = {
+--     enabled = "wezterm",
+--     -- these are defaults set by wezterm
+--     wezterm = {
+--       direction = "bottom", -- left/right/top/bottom
+--       top_level = false,
+--       percent = 50,
+--     },
+--   },
+-- }
 
 vim.diagnostic.config({
   virtual_text = false,

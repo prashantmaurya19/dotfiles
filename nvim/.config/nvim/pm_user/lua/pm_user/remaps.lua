@@ -12,11 +12,11 @@ local M = {
     end, opts)
     keyset("n", "]d", function()
       -- vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
-      vim.diagnostic.jump({ count = 1, float = true })
+      vim.diagnostic.jump({ count = 1, float = true, severity = vim.diagnostic.severity.ERROR })
     end, opts)
     keyset("n", "[d", function()
       -- vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
-      vim.diagnostic.jump({ count = -1, float = true })
+      vim.diagnostic.jump({ count = -1, float = true, severity = vim.diagnostic.severity.ERROR })
     end, opts)
     keyset("n", ";", vim.lsp.buf.signature_help, opts)
     keyset("n", "gd", function()
@@ -69,18 +69,16 @@ local M = {
 }
 keyset("n", "<leader>vs", ":vsplit<CR>", M.keyargs({ "noremap", "silent" })) -- splite buffer vertical
 keyset("n", "<leader>hs", ":split<CR>", M.keyargs({ "noremap", "silent" })) -- splite buffer vertical
-keyset("n", "<leader>sa", ":mksession!s.vim<CR>", M.keyargs({ "noremap", "silent" })) -- save session on cwd
+-- keyset("n", "<leader>sa", ":mksession!s.vim<CR>", M.keyargs({ "noremap", "silent" })) -- save session on cwd
 keyset("n", "<leader>ss", ":wa<CR>", M.keyargs({ "noremap", "silent" })) -- save session on cwd
-keyset("n", "<leader>q", ":q!<CR>", M.keyargs({ "noremap", "silent" })) -- quit window by force
-keyset("n", "<leader>w", ":bd!<CR>", M.keyargs({ "noremap", "silent" })) -- delete buffer
+keyset("n", "<leader>q", ":qa!<CR>", M.keyargs({ "noremap", "silent" })) -- quit window by force
+keyset("n", "<leader>w", ":q!<CR>", M.keyargs({ "noremap", "silent" })) -- delete buffer
 keyset("n", "<leader>gg", ":Git<CR>", M.keyargs({ "noremap", "silent" })) -- Git command
 keyset("n", "<leader>gc", ":Git commit<CR>", M.keyargs({ "noremap", "silent" })) -- Git commit command
 keyset("n", "<leader>gp", ":Git push<CR>", M.keyargs({ "noremap", "silent" })) -- Git commit command
 keyset({ "t" }, "<C-n>", "<C-\\><C-n>", M.keyargs({ "silent" }))
 keyset({ "n", "x" }, "{", "<C-u>zz")
 keyset({ "n", "x" }, "}", "<C-d>zz")
-keyset("n", "<Tab>", ">>", M.keyargs({ "silent" }))
-keyset("n", "<S-Tab>", "<<", M.keyargs({ "silent" }))
 keyset("x", "<leader>p", [["_dP]]) -- paste without losing the copied text
 -- move line up and down
 keyset("v", "J", ":m '>+1<CR>gv=gv", M.keyargs({ "silent" }))
@@ -126,6 +124,10 @@ M.mapKeyForNewtab("n", "<leader>ff", function()
   builtin.find_files(M.telescope_opt({
     hidden = true,
   }))
+end, M.keyargs({ "noremap", "silent" }))
+
+M.mapKeyForNewtab("n", "<leader>ls", function()
+  vim.cmd("Telescope session-lens search_session")
 end, M.keyargs({ "noremap", "silent" }))
 
 M.mapKeyForNewtab("n", "<leader>en", function()
