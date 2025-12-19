@@ -94,7 +94,7 @@
     },
 
     "network": {
-        "interface": "wlp2*", // (Optional) To force the use of this interface
+        //"interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{icon} {essid}",
         "format-ethernet": "Connected  ",
         "tooltip-format": "{ifname}: {gwaddr}",
