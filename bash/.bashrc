@@ -296,6 +296,7 @@ export PATH=$PATH:~/nvim/bin/
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:~/.local/share/flatpak/exports/share
 export XAUTHORITY=$HOME/.Xauthority
+export DOTFILES=$HOME/Documents/linux-dotfiles
 # export HISTCONTROL=ignoreboth:erasedups
 # export HISTSIZE=5000
 # export HISTFILESIZE=10000

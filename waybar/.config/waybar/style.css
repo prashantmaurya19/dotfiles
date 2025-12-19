@@ -8,21 +8,24 @@
 
 @define-color way-bg rgba(0, 0, 0, 0.79);
 @define-color module-bg transparent;
-@define-color wifi #d900b5;
+@define-color wifi #FF00FF;
 @define-color wifi-disconnect red;
-@define-color primary #018f33;
-@define-color second #0ad150;
+@define-color primary #168ba3;
+@define-color second #00eada;
 @define-color ubuntu #D74614;
 @define-color audio #00c0fa;
 @define-color battery-charging #60d606;
 @define-color battery #0ad150;
 @define-color backlight #f5e900;
 @define-color urgent #eb4d4b;
+@define-color keyboard white;
+@define-color bluetooth #3277FF;
+@define-color bluetooth-off red;
+@define-color bluetooth-connect #3277FF;
 
 #battery {
   background: transparent;
   color: @battery;
-  opacity: 0.7;
   margin-right: 7px;
   padding: 0 6px 0 6px;
   border-radius: 100px;
@@ -34,7 +37,6 @@
   padding: 0 6px 0 6px;
   background: rgba(255, 255, 255, 0.2);
   color: white;
-  opacity: 0.9;
   margin-right: 7px;
   font-size: 0.93em;
 }
@@ -57,7 +59,6 @@
 #clock {
   background: transparent;
   color: #ffffff;
-  opacity: 0.7;
   /* font-size: 0.93em; */
 }
 
@@ -68,7 +69,29 @@
   background: transparent;
   color: @backlight;
   margin-right: 7px;
-  opacity: 0.7;
+}
+
+#bluetooth {
+  background: transparent; /* Match your bar background */
+  padding: 0 6px 0 6px;
+  border-radius: 100px;
+  border: 1px solid;
+  color: @bluetooth; /* Bluetooth Color */
+  border-color: @bluetooth;
+  margin-right: 7px;
+}
+
+/* When Bluetooth is turned off */
+#bluetooth.off {
+  background: transparent; /* Red Background */
+  color: @bluetooth-off; /* Dark Text for contrast */
+  border-color: @bluetooth-off;
+}
+
+/* When a device is connected */
+#bluetooth.connected {
+  color: @bluetooth-connect; /* Change icon/text color when active */
+  border-color: @bluetooth-connect;
 }
 
 #network {
@@ -76,7 +99,6 @@
   border-radius: 100px;
   background: transparent;
   color: #ffffff;
-  opacity: 0.7;
   margin-right: 7px;
   padding: 0 6px 0 6px;
 }
@@ -84,21 +106,23 @@
 #network.wifi {
   background: transparent;
   color: @wifi;
+  border-color: @wifi;
 }
 
-#network.disconnected {
+#network.disconnected,
+#network.disabled {
   background: transparent;
   color: @wifi-disconnect;
+  border-color: @wifi-disconnect;
 }
 
 #keyboard-state {
   background: transparent;
   color: #ffffff;
-  opacity: 0.7;
   margin-right: 7px;
   padding: 0 6px 0 6px;
   border-radius: 100px;
-  border: 1px solid white;
+  border: 1px solid @keyboard;
 }
 
 #keyboard-state label {
@@ -176,7 +200,6 @@ window#waybar {
 #custom-audio {
   background: transparent;
   color: @audio;
-  opacity: 0.7;
   margin-right: 7px;
   padding: 0 6px 0 6px;
   border-radius: 100px;
@@ -189,6 +212,5 @@ window#waybar {
   border: 1px solid @ubuntu;
   background: transparent;
   color: @ubuntu;
-  opacity: 0.7;
   margin-right: 7px;
 }

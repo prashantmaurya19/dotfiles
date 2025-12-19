@@ -1,59 +1,59 @@
 #input {
-	margin: 10px;
-	/* how much padding there is around the input box */
-	border: none;
-	/* border around the input box */
-	background-color: #453e3d; /* background color of the text input box itself */
-	/* background color of the text input box itself */
-	color: #ffffff;
-	/* text color as you type inside the input box */
+  margin: 10px;
+  /* how much padding there is around the input box */
+  border: none;
+  /* border around the input box */
+  background-color: #453e3d; /* background color of the text input box itself */
+  /* background color of the text input box itself */
+  color: #ffffff;
+  /* text color as you type inside the input box */
 }
 
 #inner-box {
-	margin: 5px;
-	border: none;
-	/* horizontal bar that appears above the search results */
-	background-color: #1f1f1f;
-	/* background color behind the search results */
-	color: #ffffff;
-	/* text color of each search result */
+  margin: 5px;
+  border: none;
+  /* horizontal bar that appears above the search results */
+  background-color: #1f1f1f;
+  /* background color behind the search results */
+  color: #ffffff;
+  /* text color of each search result */
 }
 
 #outer-box {
-	margin: 5px;
-	border: none;
-	background-color: #1f1f1f;
+  margin: 5px;
+  border: none;
+  background-color: #1f1f1f;
 }
 
 #text {
-	margin: 5px;
-	border: none;
-	/* border around each individual item within the search results */
-	background-color: transparent;
-	/* background behind each individual item within the search results */
-	color: ffffff;
+  margin: 5px;
+  border: none;
+  /* border around each individual item within the search results */
+  background-color: transparent;
+  /* background behind each individual item within the search results */
+  color: ffffff;
 }
 
 /* Remove the search icon */
-#input>image.left {
-	-gtk-icon-transform: scaleX(0);
+#input > image.left {
+  -gtk-icon-transform: scaleX(0);
 }
 
-#img{
+#img {
   background: transparent;
 }
 
 #scroll {
-	margin: 5px;
-	border: 2px solid #1f1f1f;
-	background-color: #1f1f1f;
-	/* background color behind the search slider */
+  margin: 5px;
+  border: 2px solid #1f1f1f;
+  background-color: #1f1f1f;
+  /* background color behind the search slider */
 }
 
 window {
-	margin: 15px;
-	border-radius: 4px;
-	border: 1px solid rgba(255, 255, 255, 0.4);
-	/* border around the entire window */
-	background-color: #1f1f1f;
+  margin: 15px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  /* border around the entire window */
+  background-color: #1f1f1f;
 }
