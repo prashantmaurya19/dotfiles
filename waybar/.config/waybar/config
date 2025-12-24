@@ -43,16 +43,16 @@
     "bluetooth": {
 	"format": "󰂯 {status}",
 	"format-off": "󰂲 {status}",
+	"format-disabled": "󰂲 {status}",
 	"format-connected": "󰂰 {device_alias}",
-	"format-connected-battery": "󰋋 {device_alias} {device_battery_percentage}%",
+	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
 	// This defines what shows when BT is on but no device is connected
 	"format-device-preference": [ "earbuds-alias-here", "headset-alias-here" ], 
 	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
 	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
 	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
 	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-	"on-click": "/home/prashant/Documents/linux-dotfiles/scripts/bluetooth-power-toggle.sh",
-	"on-click-right": "bluetoothctl connect XX:XX:XX:XX:XX:XX",
+	"on-click": "/home/prashant/Documents/dotfiles/scripts/bluetooth-power-toggle.sh",
     },
     "battery": {
         "states": {
@@ -115,6 +115,6 @@
         "format": "{}",
         "signal": 8,
         "interval": "once",
-        "exec": "/home/prashant/Documents/linux-dotfiles/sway/.config/sway/audio.sh",
+        "exec": "/home/prashant/Documents/dotfiles/sway/.config/sway/audio.sh",
     },
 }

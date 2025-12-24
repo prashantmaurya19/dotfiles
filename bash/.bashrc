@@ -192,7 +192,6 @@ IGNORED_PATH_DIRS=(
   "$HOME/.npm"
   "$HOME/.docker"
   "$HOME/.var"
-  "$HOME/.cache"
   "$HOME/.dotnet"
   "$HOME/.fonts"
   "$HOME/.gnupg"
@@ -291,12 +290,13 @@ bind -x '"\e.":"_fzf_open_file"'
 bind -x '"\em":"_fzf_history_search_and_insert"'
 
 export EDITOR="nvim"
+export ADW_DEBUG_COLOR_SCHEME=prefer-dark
 export PATH=$PATH:/usr/bin/zig/
 export PATH=$PATH:~/nvim/bin/
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:~/.local/share/flatpak/exports/share
 export XAUTHORITY=$HOME/.Xauthority
-export DOTFILES=$HOME/Documents/linux-dotfiles
+export DOTFILES=$HOME/Documents/dotfiles
 # export HISTCONTROL=ignoreboth:erasedups
 # export HISTSIZE=5000
 # export HISTFILESIZE=10000

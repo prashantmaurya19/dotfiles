@@ -19,6 +19,7 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 --   },
 -- }
 
+vim.g.copilot_no_tab_map = true
 vim.diagnostic.config({
   virtual_text = false,
   underline = true,

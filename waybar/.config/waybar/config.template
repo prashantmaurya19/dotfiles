@@ -44,7 +44,7 @@
 	"format": "󰂯 {status}",
 	"format-off": "󰂲 {status}",
 	"format-connected": "󰂰 {device_alias}",
-	"format-connected-battery": "󰋋 {device_alias} {device_battery_percentage}%",
+	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
 	// This defines what shows when BT is on but no device is connected
 	"format-device-preference": [ "earbuds-alias-here", "headset-alias-here" ], 
 	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
@@ -52,7 +52,6 @@
 	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
 	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
 	"on-click": "$DOTFILES/scripts/bluetooth-power-toggle.sh",
-	"on-click-right": "bluetoothctl connect XX:XX:XX:XX:XX:XX",
     },
     "battery": {
         "states": {

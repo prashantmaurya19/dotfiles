@@ -1,0 +1,5 @@
+# ~/.config/mako/config
+default-timeout=5000  # Notifications disappear after 5 seconds (5000ms)
+
+[urgency=high]
+ignore-timeout=1

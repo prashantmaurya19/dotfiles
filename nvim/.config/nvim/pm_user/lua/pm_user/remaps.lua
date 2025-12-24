@@ -171,4 +171,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = M.on_lsp_attach,
 })
 
+--copilot
+keyset("i", "<C-S-J>", 'copilot#Accept("")', {
+  expr = true,
+  replace_keycodes = false,
+  noremap = true,
+  silent = true,
+})
+
 return M

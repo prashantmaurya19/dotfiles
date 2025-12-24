@@ -1,6 +1,6 @@
 #!/bin/bash
 if bluetoothctl show | grep -q "Powered: yes"; then
-    bluetoothctl power off
+  rfkill unblock bluetooth
 else
-    bluetoothctl power on
+  rfkill block bluetooth
 fi

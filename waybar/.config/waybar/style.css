@@ -6,7 +6,7 @@
   padding: 0;
 }
 
-@define-color way-bg rgba(0, 0, 0, 0.79);
+@define-color way-bg rgba(0, 0, 0, 1);
 @define-color module-bg transparent;
 @define-color wifi #FF00FF;
 @define-color wifi-disconnect red;
@@ -82,7 +82,8 @@
 }
 
 /* When Bluetooth is turned off */
-#bluetooth.off {
+#bluetooth.off,
+#bluetooth.disabled {
   background: transparent; /* Red Background */
   color: @bluetooth-off; /* Dark Text for contrast */
   border-color: @bluetooth-off;

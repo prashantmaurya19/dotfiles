@@ -1,9 +1,10 @@
 allow_images=true
-image_size=64
-width=600
+image_size=32
+prompt=Search apps...
+width=800
 height=200
 insensitive=true
 mode=drun
 columns=1
 padding:5
-lines=6
+lines=13
