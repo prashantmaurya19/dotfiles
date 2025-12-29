@@ -112,6 +112,7 @@ config.keys = {
   { key = "r", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
   { key = "-", mods = "LEADER", action = act.ActivateKeyTable({ name = "text_zoom_in_out", one_shot = false }) },
   { key = "s", mods = "LEADER", action = act.ActivateKeyTable({ name = "term_scroll", one_shot = false }) },
+  { key = "m", mods = "LEADER", action = act.ActivateKeyTable({ name = "nav_pane", one_shot = false }) },
 }
 
 -- for i = 1, 9 do
@@ -136,6 +137,14 @@ config.key_tables = {
     { key = "j", action = act.AdjustPaneSize({ "Down", 2 }) },
     { key = "k", action = act.AdjustPaneSize({ "Up", 2 }) },
     { key = "l", action = act.AdjustPaneSize({ "Right", 2 }) },
+    { key = "Escape", action = "PopKeyTable" },
+    { key = "Enter", action = "PopKeyTable" },
+  },
+  nav_pane = {
+    { key = "h", action = act.ActivatePaneDirection("Left") },
+    { key = "j", action = act.ActivatePaneDirection("Down") },
+    { key = "k", action = act.ActivatePaneDirection("Up") },
+    { key = "l", action = act.ActivatePaneDirection("Right") },
     { key = "Escape", action = "PopKeyTable" },
     { key = "Enter", action = "PopKeyTable" },
   },
@@ -169,11 +178,8 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, configs, hover, max_wi
   end
   local edge_foreground = background
   local title = tab.tab_title
-  if tab.active_pane.is_zoomed then
-    title = title .. " [Z]"
-  end
 
-  title = wezterm.truncate_right(title, max_width - 4)
+  -- title = wezterm.truncate_right(title, max_width - 4)
 
   return {
     { Background = { Color = edge_foreground } },
@@ -181,7 +187,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, configs, hover, max_wi
     { Text = SOLID_LEFT_ARROW },
     { Background = { Color = background } },
     { Foreground = { Color = foreground } },
-    { Text = (tab.tab_index + 1) .. ":" .. title },
+    { Text = (tab.active_pane.is_zoomed and "[z]" or "") .. (tab.tab_index + 1) .. ":" .. title },
     { Background = { Color = edge_background } },
     { Foreground = { Color = edge_foreground } },
     { Text = SOLID_LEFT_ARROW },
@@ -216,7 +222,6 @@ wezterm.on("update-status", function(window, pane)
     title = cmd
   end
   tab:set_title(title)
-  -- tab:set_title(title .. (get_zoomed_pane(tab) and "[Z]" or ""))
 
   window:set_right_status(wezterm.format({
     -- zoomed,

@@ -1,3 +1,4 @@
+@import url("file:///home/prashant/.cache/wal/colors-waybar.css");
 * {
   font-family: "FiraCode Nerd Font", Roboto, Helvetica, Arial, sans-serif;
   font-size: 15px;
@@ -22,6 +23,22 @@
 @define-color bluetooth #3277FF;
 @define-color bluetooth-off red;
 @define-color bluetooth-connect #3277FF;
+/* @define-color way-bg @background; */
+/* @define-color module-bg transparent; */
+/* @define-color wifi @color2; */
+/* @define-color wifi-disconnect red; */
+/* @define-color primary @foreground; */
+/* @define-color second @color1; */
+/* @define-color ubuntu @color7; */
+/* @define-color audio @color4; */
+/* @define-color battery-charging @color6; */
+/* @define-color battery @color5; */
+/* @define-color backlight @color3; */
+/* @define-color urgent @color9; */
+/* @define-color keyboard @color0; */
+/* @define-color bluetooth @color8; */
+/* @define-color bluetooth-off red; */
+/* @define-color bluetooth-connect @color11; */
 
 #battery {
   background: transparent;
@@ -182,7 +199,7 @@ window#waybar {
   background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
   margin-right: 5px;
-  border-radius: 2px;
+  border-radius: 3px;
   opacity: 0.9;
   padding-left: 2px;
   font-size: 20px;
