@@ -1,7 +1,8 @@
 [flavor]
 # dark = "tokyo-night"
-# dark = "dracula"
+dark = "dracula"
+light = "dracula"
 # dark = "catppuccin-frappe"
 # dark = "ayu-dark"
 # light = "kanagawa-lotus"
-dark = "sunset"
+# dark = "sunset"

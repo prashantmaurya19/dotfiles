@@ -84,8 +84,8 @@
             "numlock": true,
             "capslock": true,
             "format": {
-        	    "numlock": "{icon} Num ",
-        	    "capslock": "{icon} Caps "
+        	    "numlock": "{icon} N ",
+        	    "capslock": "{icon} C "
             },
             "format-icons": {
         	    "unlocked": "",

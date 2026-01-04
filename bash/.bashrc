@@ -293,6 +293,7 @@ export EDITOR="nvim"
 export ADW_DEBUG_COLOR_SCHEME=prefer-dark
 export PATH=$PATH:/usr/bin/zig/
 export PATH=$PATH:~/nvim/bin/
+export PATH=$PATH:~/Documents/dotfiles/scripts/
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:~/.local/share/flatpak/exports/share
 export XAUTHORITY=$HOME/.Xauthority

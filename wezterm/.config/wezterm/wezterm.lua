@@ -209,6 +209,7 @@ wezterm.on("update-status", function(window, pane)
 
   local stat_symbol = wezterm.nerdfonts.fa_linux
   if stat == "default" then
+    stat = "Home"
     stat_symbol = wezterm.nerdfonts.cod_terminal_linux
   elseif stat == "resize_pane" then
     stat_symbol = wezterm.nerdfonts.md_resize
