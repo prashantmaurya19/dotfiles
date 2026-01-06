@@ -19,6 +19,13 @@ autocmd("FileType", {
   end,
 })
 
+autocmd("FileType", {
+  pattern = { "java", "javascriptreact", "javascript", "css", "rust" }, -- List of file types
+  callback = function()
+    vim.treesitter.start()
+  end,
+})
+
 vim.api.nvim_create_autocmd("InsertEnter", {
   group = vim.api.nvim_create_augroup("CenterOnInsert", { clear = true }),
   callback = function()
