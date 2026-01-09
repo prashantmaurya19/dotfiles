@@ -168,53 +168,6 @@ _fzf_history_search_and_insert() {
   # : # Do nothing extra, just set the line
   # fi
 }
-
-IGNORED_DIRS=(
-  "mason"
-  "fnm"
-  ".git"
-  ".vscode"
-  "target"
-  "node_modules"
-  "Trash"
-  "share"
-  "venv"
-  ".java"
-)
-
-IGNORED_PATH_DIRS=(
-  "$HOME/AppData"
-  "$HOME/snap"
-  "$HOME/.cache"
-  "$HOME/.yarn"
-  "$HOME/.m2"
-  "$HOME/.fonts"
-  "$HOME/.npm"
-  "$HOME/.docker"
-  "$HOME/.var"
-  "$HOME/.dotnet"
-  "$HOME/.fonts"
-  "$HOME/.gnupg"
-  "$HOME/.m2"
-  "$HOME/.bun"
-  "$HOME/.mongodb"
-  "$HOME/.npm"
-  "$HOME/.pki"
-  "$HOME/.ssh"
-  "$HOME/.sts4"
-  "$HOME/Apps"
-  "$HOME/.config"
-)
-
-# 2. Build the string by joining the array elements with ' -o -name '
-# We use parameter expansion to join the elements.
-# The result will be: "Trash -o -name .vscode -o -name share..."
-JOINED_DIRS="${IGNORED_PATH_DIRS[@]/#/ -o -path } -prune ${IGNORED_DIRS[@]/#/ -o -name }"
-
-# 3. Prepend the first '-name ' to the entire string
-# We remove the first ' -o -name ' which is redundant at the beginning.
-FZF_IGNORE_DIR="${JOINED_DIRS:4}"
-
 _fzf_open_file() {
   local result
   result=$(
@@ -267,6 +220,52 @@ _fzf_open_folder() {
 
 }
 
+IGNORED_DIRS=(
+  "mason"
+  "fnm"
+  ".git"
+  ".vscode"
+  "target"
+  "node_modules"
+  "Trash"
+  "share"
+  "venv"
+  ".java"
+)
+
+IGNORED_PATH_DIRS=(
+  "$HOME/AppData"
+  "$HOME/snap"
+  "$HOME/.cache"
+  "$HOME/.yarn"
+  "$HOME/.m2"
+  "$HOME/.fonts"
+  "$HOME/.npm"
+  "$HOME/.docker"
+  "$HOME/.var"
+  "$HOME/.dotnet"
+  "$HOME/.fonts"
+  "$HOME/.gnupg"
+  "$HOME/.m2"
+  "$HOME/.bun"
+  "$HOME/.mongodb"
+  "$HOME/.npm"
+  "$HOME/.pki"
+  "$HOME/.ssh"
+  "$HOME/.sts4"
+  "$HOME/Apps"
+  "$HOME/.config"
+)
+
+# 2. Build the string by joining the array elements with ' -o -name '
+# We use parameter expansion to join the elements.
+# The result will be: "Trash -o -name .vscode -o -name share..."
+JOINED_DIRS="${IGNORED_PATH_DIRS[@]/#/ -o -path } -prune ${IGNORED_DIRS[@]/#/ -o -name }"
+
+# 3. Prepend the first '-name ' to the entire string
+# We remove the first ' -o -name ' which is redundant at the beginning.
+FZF_IGNORE_DIR="${JOINED_DIRS:4}"
+
 alias git-push-main='git push origin main'
 alias cls='clear'
 alias startup='python3 ~/Documents/coding/startup/main.py'
@@ -284,6 +283,7 @@ alias v='nvim'
 alias vleet='nvim leetcode.nvim'
 alias vs='nvim -S s.vim'
 alias y='yazi'
+alias ya='/snap/yazi/current/ya'
 
 bind -x '"\e,":"_fzf_open_folder"'
 bind -x '"\e.":"_fzf_open_file"'
@@ -293,6 +293,7 @@ export EDITOR="nvim"
 export ADW_DEBUG_COLOR_SCHEME=prefer-dark
 export PATH=$PATH:/usr/bin/zig/
 export PATH=$PATH:~/nvim/bin/
+export PATH=$PATH:~/.local/share/applications/
 export PATH=$PATH:~/Documents/dotfiles/scripts/
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:~/.local/share/flatpak/exports/share

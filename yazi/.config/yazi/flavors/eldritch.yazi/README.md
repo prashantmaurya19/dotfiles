@@ -3,7 +3,7 @@
 </div>
 
 <h3 align="center">
-	Sunset Flavor for <a href="https://github.com/sxyazi/yazi">Yazi</a>
+	Eldritch Flavor for <a href="https://github.com/sxyazi/yazi">Yazi</a>
 </h3>
 
 ## 👀 Preview
@@ -12,20 +12,22 @@
 
 ## 🎨 Installation
 
-
-```bash
-ya pack -a PinThePenguinOne/sunset
+```sh
+ya pkg add 6ruby1/eldritch
 ```
 
 ## ⚙️ Usage
 
-Add the these lines to your `theme.toml` configuration file to use it:
-
+To set it as your dark flavor, change the content of your `theme.toml` to:
 
 ```toml
 [flavor]
-dark = "sunset"
+dark = "eldritch"
 ```
+
+Make sure your `theme.toml` doesn't contain anything other than `[flavor]`, unless you want to override certain styles of this flavor.
+
+See the [Yazi flavor documentation](https://yazi-rs.github.io/docs/flavors/overview) for more details.
 
 ## 📜 License
 

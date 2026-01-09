@@ -207,12 +207,18 @@ wezterm.on("update-status", function(window, pane)
     stat_color = "#bb9af7"
   end
 
-  local stat_symbol = wezterm.nerdfonts.fa_linux
+  local stat_symbol = wezterm.nerdfonts.cod_terminal_ubuntu
   if stat == "default" then
     stat = "Home"
-    stat_symbol = wezterm.nerdfonts.cod_terminal_linux
+    stat_symbol = wezterm.nerdfonts.cod_terminal_ubuntu
   elseif stat == "resize_pane" then
     stat_symbol = wezterm.nerdfonts.md_resize
+  elseif stat == "nav_pane" then
+    stat_symbol = wezterm.nerdfonts.md_near_me
+  elseif stat == "text_zoom_in_out" then
+    stat_symbol = wezterm.nerdfonts.cod_text_size
+  elseif stat == "term_scroll" then
+    stat_symbol = wezterm.nerdfonts.fa_arrow_down .. wezterm.nerdfonts.fa_arrow_up
   end
 
   local tab = pane:window():active_tab()

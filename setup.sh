@@ -2,11 +2,16 @@
 
 sudo apt update
 sudo apt upgrade
-sudo apt install git ripgrep build-essential imagemagick wlogout sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome curl wget lsd stow fzf pulseaudio pulseaudio-utils wf-recorder blueman bluez bluez-obexd redshift -y
+sudo apt install git ripgrep pipx build-essential imagemagick wlogout sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome curl wget lsd stow fzf pulseaudio pulseaudio-utils wf-recorder blueman bluez bluez-obexd redshift -y
 sudo snap install yazi --classic
 sudo snap install zig --classic --beta
 sudo snap install nvim --classic
 sudo snap install btop
+
+# run below command in case of error by pipx while installing the waypaper
+# sudo apt install python3-dev pkg-config libcairo2-dev libgirepository-2.0-dev -y
+
+pipx install waypaper
 
 # install starship
 curl -sS https://starship.rs/install.sh | sh

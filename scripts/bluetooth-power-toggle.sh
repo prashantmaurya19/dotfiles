@@ -1,6 +1,6 @@
 #!/bin/bash
 if bluetoothctl show | rg "Powered: yes"; then
-  sudo rfkill unblock bluetooth
+  rfkill block bluetooth
 else
-  sudo rfkill block bluetooth
+  rfkill unblock bluetooth
 fi
