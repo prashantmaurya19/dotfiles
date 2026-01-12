@@ -14,7 +14,7 @@ set $win_mod Mod4
 
 # exec --no-startup-id picom
 exec_always --no-startup-id killall redshift
-exec waypaper --restore
+exec sleep 2 && $HOME/.local/bin/waypaper --restore
 exec_always --no-startup-id redshift -P -O 4000
 # exec --no-startup-id xrandr --output eDP-1 --brightness 1.3
 # exec_always --no-startup-id killall waybar

@@ -9,3 +9,4 @@ stow -vt ~ wlogout/
 stow -vt ~ wofi/
 stow -vt ~ yazi/
 stow -vt ~ mako/
+stow -vt ~ waypaper/
