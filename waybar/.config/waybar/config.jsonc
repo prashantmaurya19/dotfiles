@@ -51,6 +51,7 @@
   "bluetooth": {
     "format": "󰂯",
     "format-off": "󰂲",
+    "format-disabled": "󰂲",
     "format-connected": " {device_alias}",
     "format-connected-battery": " {device_alias} {device_battery_percentage}%",
     // This defines what shows when BT is on but no device is connected

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 NEW_WALLPAPER=$1
 LINK_PATH="$HOME/.cache/current_wallpaper"
 
@@ -15,9 +14,9 @@ if [ -z "$NEW_WALLPAPER" ]; then
 fi
 
 # generating colors with pywal
-source ~/.venv/bin/activate
+# source ~/.venv/bin/activate
 
-wal -i $NEW_WALLPAPER -n -s -t -e
+# wal -i $NEW_WALLPAPER -n -s -t -e --cols16 "lighten" --saturate 1
 
 # 2. Ensure the parent directory (.cache) exists
 mkdir -p "$(dirname "$LINK_PATH")"
