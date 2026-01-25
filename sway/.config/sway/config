@@ -14,7 +14,6 @@ set $win_mod Mod4
 
 # exec --no-startup-id picom
 exec_always --no-startup-id killall redshift
-exec sleep 2 && $HOME/.local/bin/waypaper --restore
 exec_always --no-startup-id redshift -P -O 4000
 # exec --no-startup-id xrandr --output eDP-1 --brightness 1.3
 # exec_always --no-startup-id killall waybar
@@ -23,8 +22,7 @@ exec_always --no-startup-id redshift -P -O 4000
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 bindsym $mod+Shift+e exec $HOME/.config/sway/exit.sh
-# output * bg /home/prashant/Pictures/mountain-landscape-5120x2880-24317.jpg fill
-# output * bg "/home/prashant/Documents/status bar referance.png" fill
+output * bg ~/.cache/current_wallpaper fill
 
 # output eDP-1 scale 1.03
 
@@ -92,14 +90,14 @@ bindsym $mod+Shift+q kill
 # Open the application launcher:
 bindsym $mod+space exec $menu
 bindsym $mod+f4 exec wlogout -p layer-shell
-input type:touchpad {
+input "type:touchpad" {
     dwt enabled
     tap enabled
     middle_emulation enabled
     natural_scroll enabled
     accel_profile flat
     pointer_accel 0.2
-    scroll_factor 0.4
+    scroll_factor 0.2
 }
 
 # Open the application launcher (alternate version):

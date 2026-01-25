@@ -18,6 +18,7 @@ return {
           css = { "prettier" },
           yaml = { "prettier" },
           scss = { "prettier" },
+          jsonc = { "prettier" },
           javascript = { "prettier" },
           javascriptreact = { "prettier" },
           json = { "prettier" },

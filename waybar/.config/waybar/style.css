@@ -1,3 +1,4 @@
+@import url("../../.cache/wal/colors-waybar.css");
 * {
   font-family: "FiraCode Nerd Font", Roboto, Helvetica, Arial, sans-serif;
   font-size: 15px;
@@ -6,47 +7,10 @@
   padding: 0;
 }
 
-@define-color way-bg rgba(0, 0, 0, 1);
+@define-color bg black;
 @define-color module-bg transparent;
-@define-color wifi #FF00FF;
-@define-color wifi-disconnect red;
-@define-color primary #168ba3;
-@define-color second #00eada;
-@define-color ubuntu #D74614;
-@define-color audio #00c0fa;
-@define-color battery-charging #60d606;
-@define-color battery #0ad150;
-@define-color backlight #f5e900;
-@define-color urgent #eb4d4b;
-@define-color keyboard white;
-@define-color bluetooth #3277FF;
-@define-color bluetooth-off red;
-@define-color bluetooth-connect #3277FF;
-/* @define-color way-bg @background; */
-/* @define-color module-bg transparent; */
-/* @define-color wifi @color2; */
-/* @define-color wifi-disconnect red; */
-/* @define-color primary @foreground; */
-/* @define-color second @color1; */
-/* @define-color ubuntu @color7; */
-/* @define-color audio @color4; */
-/* @define-color battery-charging @color6; */
-/* @define-color battery @color5; */
-/* @define-color backlight @color3; */
-/* @define-color urgent @color9; */
-/* @define-color keyboard @color0; */
-/* @define-color bluetooth @color8; */
-/* @define-color bluetooth-off red; */
-/* @define-color bluetooth-connect @color11; */
-
-#battery {
-  background: transparent;
-  color: @battery;
-  margin-right: 7px;
-  padding: 0 6px 0 6px;
-  border-radius: 100px;
-  border: 1px solid @battery;
-}
+@define-color primary white;
+@define-color danger #f53c3c;
 
 #mode {
   border-radius: 100px;
@@ -57,9 +21,11 @@
   font-size: 0.93em;
 }
 
-#battery.charging,
-#battery.plugged {
-  color: @battery-charging;
+#battery {
+  background: transparent;
+  color: @primary;
+  margin-right: 7px;
+  padding: 0 6px 0 6px;
 }
 
 #battery.critical:not(.charging) {
@@ -68,32 +34,26 @@
   animation-iteration-count: infinite;
   animation-name: blink;
   animation-timing-function: linear;
-  background-color: #f53c3c;
-  color: white;
+  background-color: @danger;
+  color: @primary;
 }
 
 #clock {
   background: transparent;
-  color: #ffffff;
-  /* font-size: 0.93em; */
+  color: @primary;
 }
 
 #backlight {
   padding: 0 6px 0 6px;
-  border-radius: 100px;
-  border: 1px solid @backlight;
   background: transparent;
-  color: @backlight;
+  color: @primary;
   margin-right: 7px;
 }
 
 #bluetooth {
   background: transparent; /* Match your bar background */
   padding: 0 6px 0 6px;
-  border-radius: 100px;
-  border: 1px solid;
-  color: @bluetooth; /* Bluetooth Color */
-  border-color: @bluetooth;
+  color: @primary; /* Bluetooth Color */
   margin-right: 7px;
 }
 
@@ -101,19 +61,10 @@
 #bluetooth.off,
 #bluetooth.disabled {
   background: transparent; /* Red Background */
-  color: @bluetooth-off; /* Dark Text for contrast */
-  border-color: @bluetooth-off;
-}
-
-/* When a device is connected */
-#bluetooth.connected {
-  color: @bluetooth-connect; /* Change icon/text color when active */
-  border-color: @bluetooth-connect;
+  color: @danger; /* Dark Text for contrast */
 }
 
 #network {
-  border: 1px solid @wifi;
-  border-radius: 100px;
   background: transparent;
   color: #ffffff;
   margin-right: 7px;
@@ -122,36 +73,24 @@
 
 #network.wifi {
   background: transparent;
-  color: @wifi;
-  border-color: @wifi;
+  color: @primary;
 }
 
 #network.disconnected,
 #network.disabled {
   background: transparent;
   color: @wifi-disconnect;
-  border-color: @wifi-disconnect;
 }
 
 #keyboard-state {
   background: transparent;
-  color: #ffffff;
+  color: @primary;
   margin-right: 7px;
   padding: 0 6px 0 6px;
-  border-radius: 100px;
-  border: 1px solid @keyboard;
-}
-
-#keyboard-state label {
-  color: #fcba03;
-}
-
-#keyboard-state label.locked {
-  color: #60ff40;
 }
 
 window#waybar {
-  background: @way-bg;
+  background: @bg;
   transition-duration: 0.2s;
   transition-property: background-color;
 }
@@ -159,33 +98,27 @@ window#waybar {
 .modules-center {
   background: @module-bg;
   padding: 0 10px 0 10px;
-  border-radius: 20px;
-  border-radius: 20px;
 }
 
 .modules-left {
   background: @module-bg;
   padding: 5px 10px 5px 5px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
 }
 
 .modules-right {
   background: @module-bg;
-  padding: 5px 0 5px 10px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+  padding: 5px 10px 5px 0;
 }
 
 #workspaces button:hover {
-  background: @second;
-  color: #ffffff;
+  background: @primary;
+  color: @bg;
   opacity: 1;
 }
 
 #workspaces button.focused:hover {
-  background: @second;
-  color: #ffffff;
+  background: @primary;
+  color: @bg;
   opacity: 1;
 }
 
@@ -195,8 +128,8 @@ window#waybar {
 
 #workspaces button {
   /* background: transparent; */
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  background: alpha(@primary, 0.2);
+  color: @primary;
   margin-right: 5px;
   border-radius: 3px;
   opacity: 0.9;
@@ -206,27 +139,23 @@ window#waybar {
 
 #workspaces button.focused {
   background: @primary;
-  color: #ffffff;
+  color: @bg;
 }
 
 #workspaces button.urgent {
-  background-color: @urgent;
+  background-color: @danger;
 }
 
 /* Custom Stuff */
 #custom-audio {
   background: transparent;
-  color: @audio;
+  color: @primary;
   margin-right: 7px;
   padding: 0 6px 0 6px;
-  border-radius: 100px;
-  border: 1px solid @audio;
 }
 
 #custom-logout {
   padding: 0px 10px 0 6px;
-  border-radius: 100px;
-  border: 1px solid @ubuntu;
   background: transparent;
   color: @ubuntu;
   margin-right: 7px;

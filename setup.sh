@@ -1,4 +1,4 @@
-# do
+#!/bin/bash
 
 sudo apt update
 sudo apt upgrade
@@ -16,9 +16,15 @@ pipx install waypaper
 # install starship
 curl -sS https://starship.rs/install.sh | sh
 
+python3 -m venv ~/.venv
+source ~/.venv/bin/activate
+pip install pywal
+deactivate
+
 bash ./scripts/install_font.sh
 bash ./scripts/install_sway_screenshot.sh
-# fc-list | grep "Fira Mono Nerd Font"
-# install wezterm
+bash ./scripts/update_wallpaper_link.sh ~/Pictures/mountain-landscape-5120x2880-24317.jpg
 
 # instalation location of third-party apps => ~/Apps/
+# fc-list | grep "Fira Mono Nerd Font"
+# install wezterm

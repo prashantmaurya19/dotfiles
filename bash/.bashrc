@@ -284,6 +284,7 @@ alias vleet='nvim leetcode.nvim'
 alias vs='nvim -S s.vim'
 alias y='yazi'
 alias ya='/snap/yazi/current/ya'
+alias pyenv='source ~/.venv/bin/activate'
 
 bind -x '"\e,":"_fzf_open_folder"'
 bind -x '"\e.":"_fzf_open_file"'
